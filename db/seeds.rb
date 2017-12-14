@@ -25,16 +25,17 @@ profile_owner_id: 1)
 # Generate a few random students and their profiles
 99.times do |n|
   name  = Faker::Name.name
-  section_number = n%10;
-  bench_number = (n - (n % 10))/10 #the remainder is the bench number
+  bench_number = n%10;
+  section_number = (n - (n % 10))/10
   gender = "NA"
   degree = "Bachelor's of Science"
   year = Faker::Number.between(2013, 2018) # I am not exactly sure what "year" means.
-  phone_number = Faker::Number.number(14) # a 14-digit number
+  phone_number = Faker::Number.number(8) # a 14-digit number
   address = Faker::Address.street_address 
-  birth_date = Date.parse(Faker::Date.birthday(17, 25))
+  #birth_date = Date.parse(Faker::Date.birthday(17, 25))
+  birth_date = Faker::Date.birthday(17,25)
 
-  Student.create!(id: n+101, section_number: section_number, bench_number: bench_number, gender: gender, degree: degree, year: year, phone_number: phone_number, address: address, birth_date: birth_date)
+  Student.create!(id: n+101, name: name, section_number: section_number, bench_number: bench_number, gender: gender, degree: degree, year: year, phone_number: phone_number, address: address, birth_date: birth_date)
 
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -53,11 +54,11 @@ end
 99.times do |n|
   name  = Faker::Name.name
   title = "Professor"
-  hiring_date = Date.parse(Faker::Date.between(5.year.ago, Date.today))
+  hiring_date = Faker::Date.between(5.year.ago, Date.today)
   department_id = Faker::Number.between(1, 3)
-  Teacher.create!(id: n+101, title: title, hiring_date: hiring_date, department_id: department_id)
+  Teacher.create!(id: n+101, name: name, title: title, hiring_date: hiring_date, department_id: department_id)
 
-  email = "example-#{n+1}@unive_teacher.org"
+  email = "example-#{n+1}@teacher.org"
   password = "password"
   User.create!(name:  name,
     email: email,
