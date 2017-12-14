@@ -11,5 +11,7 @@ Make an administrator able to do the following:
 - [ ] Ban or discipline students for certain periods of time. Delete messages from the chat room.
 
 Changelog:
-- [ ] Make a Student database table and the corresponding model (won't add much functionality yet).
-- [ ] Link User to Student
+- [x] Make a Student database table and the corresponding model (won't add much functionality yet).
+- [x] Link User to Student
+- [ ] Alter User view such that it takes a student ID during registration.
+- [ ] Make UI for adding and removing students.
