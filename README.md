@@ -14,5 +14,7 @@ Changelog:
 - [x] Make a Student database table and the corresponding model (won't add much functionality yet).
 - [x] Make a Department database table and the corresponding model.
 - [x] Make a Teacher database table and the corresponding model (empty controller).
-- [x] Link User to Student\Staff. (Model / View)
+- [x] Make an Employee database table and the corresponding model.
+- [x] Link User to Student\Staff\Employee. (Model / View).
+- [ ] Make a seeding script for the database that initializes a few employees, a few students, a few teachers, a few users, and an administrator.
 - [ ] Make UI for adding and removing students.
