@@ -9,6 +9,10 @@
             <%= f.text_field :name, class: 'form-control' %>
             <%= f.label :email %>
             <%= f.email_field :email, class: 'form-control' %>
+            <%= f.label :profile_owner_type %>
+            <%= f.select :profile_owner_type, [['Student', 'Student'], ['Professor', 'Professor']] %>
+            <%= f.label :profile_owner_id %>
+            <%= f.text_field :profile_owner_id, class: 'form-control' %>
             <%= f.label :password %>
             <%= f.password_field :password, class: 'form-control' %>
             <%= f.label :password_confirmation, "Confirmation" %>
