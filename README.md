@@ -12,6 +12,7 @@ Make an administrator able to do the following:
 
 Changelog:
 - [x] Make a Student database table and the corresponding model (won't add much functionality yet).
-- [x] Link User to Student
-- [ ] Alter User view such that it takes a student ID during registration.
+- [x] Make a Department database table and the corresponding model.
+- [x] Make a Teacher database table and the corresponding model (empty controller).
+- [x] Link User to Student\Staff. (Model / View)
 - [ ] Make UI for adding and removing students.
