@@ -7,7 +7,7 @@
   <td><%= student.birth_date %></td>
   <td>
     <div class = "dropdown">
-       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department | Degree</button>
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dept | Degree</button>
       <div class="dropdown-menu">
         <% student.enrollments.each do |enrollment| %>
           <li class="dropdown-item"><%= enrollment.department.name %> | <%= enrollment.degree %></li>
@@ -15,6 +15,8 @@
       </div>
     </div>
   </td>
-  <td><%= link_to "Edit", student, method: :edit %></td>
+  <td><%= student.created_at.to_date %></td>
+  <td><%= student.updated_at.to_date %></td>
+  <td><%= link_to "Edit", edit_student_path(student) %></td>
   <td><%= link_to "Delete", student_path(id: student.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
 </tr>
