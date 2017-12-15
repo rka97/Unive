@@ -3,6 +3,6 @@
   <%= link_to user.name, user %>
    | <%= user.profile_owner_type %>
   <% if current_user.admin? && user != current_user %>
-    | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+    | <%= link_to "delete", user_path(id: user.id), :method => :delete, :data => {confirm: "Are you sure?"} %>
   <% end%>
 </li>
