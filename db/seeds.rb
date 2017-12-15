@@ -34,8 +34,9 @@ profile_owner_id: 1)
   address = Faker::Address.street_address 
   #birth_date = Date.parse(Faker::Date.birthday(17, 25))
   birth_date = Faker::Date.birthday(17,25)
-
-  Student.create!(id: n+101, name: name, section_number: section_number, bench_number: bench_number, gender: gender, degree: degree, year: year, phone_number: phone_number, address: address, birth_date: birth_date)
+  Student.create!(id: n+101, name: name, section_number: section_number, bench_number: bench_number, gender: gender, year: year, phone_number: phone_number, address: address, birth_date: birth_date)
+  
+  Enrollment.create!(degree: degree, department_id: (n%3+1), student_id: n+101)
 
   email = "example-#{n+1}@railstutorial.org"
   password = "password"

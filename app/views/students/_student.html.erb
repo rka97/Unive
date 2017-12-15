@@ -1,0 +1,18 @@
+<tr>
+  <th scope="row"><%= student.id %></th>
+  <td><%= link_to student.name, student %></td>
+  <td><%= student.gender %></td>
+  <td><%= student.phone_number %></td>
+  <td><%= student.address %></td>
+  <td><%= student.birth_date %></td>
+  <td>
+    <div class = "dropdown">
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name | Degree</button>
+      <div class="dropdown-menu">
+        <% student.enrollments.each do |enrollment| %>
+          <li class="dropdown-item"><%= enrollment.department.name %> | <%= enrollment.degree %></li>
+        <% end %>
+      </div>
+    </div>
+  </td>
+</tr>

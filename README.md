@@ -17,4 +17,5 @@ Changelog:
 - [x] Make an Employee database table and the corresponding model.
 - [x] Link User to Student\Staff\Employee. (Model / View).
 - [x] Make a seeding script for the database that initializes a few students, a few teachers, a few users, and an administrator.
+- [x] Make a student-department association (Enrollment model).
 - [ ] Make UI for adding and removing students.
