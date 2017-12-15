@@ -1,6 +1,7 @@
 <% provide(:title, 'All students') %>
 <h1>Students</h1>
 <ul class="students">
+  <%#= link_to "New Student", student_new_path, class: "btn btn-lg btn-primary" %>
   <table class = "table">
     <thead>
       <tr>
@@ -16,7 +17,6 @@
       </tr>
       </thead>
     <tbody>
-      <%= will_paginate @students %>
         <% @students.each do |student| %>
           <%= render student %>
         <% end %>
