@@ -2,20 +2,20 @@
 <h1>Students</h1>
 <ul class="students">
   <%#= link_to "New Student", student_new_path, class: "btn btn-lg btn-primary" %>
-  Search by Name:
-  <%#= Add search here %>
+  <%= render 'search' %>
+  <br />
   <table class = "table">
     <thead>
       <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Phone #</th>
-        <th>Address</th>
-        <th>Birth Date</th>
+        <th><%=sort_link(@q, :id, "id")%></th>
+        <th><%=sort_link(@q, :name)%></th>
+        <th><%=sort_link(@q, :gender)%></th>
+        <th><%=sort_link(@q, :phone_number, "Phone #")%></th>
+        <th><%=sort_link(@q, :address, "Address")%></th>
+        <th><%=sort_link(@q, :birth_date, "Birth Date")%></th>
+        <th><%=sort_link(@q, :created_at)%></th>
+        <th><%=sort_link(@q, :updated_at)%></th>
         <th>Departments</th>
-        <th>Created At</th>
-        <th>Updated At</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>

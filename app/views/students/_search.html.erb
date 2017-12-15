@@ -1,0 +1,23 @@
+<%= search_form_for @q do |f| %>
+    <%= f.label :id_eq, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= f.search_field :id_eq, class: 'form-control', type: 'number' %>
+    </div>
+    <%= f.label :name_cont, class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+      <%= f.search_field :name_cont, class: 'form-control' %>
+    </div>
+    <%= f.label :gender_cont, class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+     <%= f.search_field :gender_cont, class: 'form-control' %>
+    </div>
+    <%= f.label :address_cont, class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+      <%= f.search_field :address_cont, class: 'form-control' %>
+    </div>
+    <%= f.label :departments_name_cont, class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+      <%= f.search_field :departments_name_cont, class: 'form-control' %>
+    </div>
+    <%= f.submit class: 'btn btn-primary', type: 'submit' %>
+<% end %>

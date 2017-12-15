@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create a few departments.
-Department.create!(id: 1, name: "Computer")
-Department.create!(id: 2, name: "Electronics")
-Department.create!(id: 3, name: "Mathematics")
+Department.create!(id: 1, name: "Computer", abbreviation: "CMP")
+Department.create!(id: 2, name: "Electronics", abbreviation: "ELC")
+Department.create!(id: 3, name: "Mathematics", abbreviation: "MTH")
 
 # Create a single administrator employee and his user.
 Employee.create!(id: 1, name: "Admin", position: "Admin", hiring_date: Date.parse("2017-12-14"), department_id: 1)

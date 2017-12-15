@@ -2,11 +2,11 @@ class StudentsController < ApplicationController
     before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
 
     def show
-
     end
 
     def index
-        @students = Student.paginate(page: params[:page])
+        @q = Student.ransack(params[:q])
+        @students = @q.result(distinct: true).paginate(page: params[:page])
     end
 
     def edit
@@ -31,6 +31,6 @@ class StudentsController < ApplicationController
 
     private
     def student_params
-        params.require(:student).permit(:name, :section_number, :bench_number, :gender, :year, :phone_number, :address, :birth_date)
+        params.require(:student).permit(:name, :section_number, :bench_number, :gender, :year, :phone_number, :address, :birth_date, :search)
     end
 end
