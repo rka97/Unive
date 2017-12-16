@@ -5,7 +5,7 @@ class CreateTeacherDegrees < ActiveRecord::Migration[5.1]
       t.date :date_awarded, null: false
       t.string :university, null: false
       t.string :field, null: false
-      t.references :teacher, foreign_key: true, optional: false, index: true, null: false
+      t.belongs_to :teacher, index: true
       t.timestamps
     end
   end

@@ -57,10 +57,12 @@ end
   title = "Professor"
   hiring_date = Faker::Date.between(5.year.ago, Date.today)
   department_id = Faker::Number.between(1, 3)
-  Teacher.create!(id: n+1010, name: name, title: title, hiring_date: hiring_date, department_id: department_id})
-  teacher_parameters = { name: "Kalin", title: "Professor", hiring_date: "11-11-2016", department_id: 1, degrees_attributes: {0 => {title: "Doctorate", date_awarded: "12-12-2017", university: "Sky University", field: "Computer Science"}}, interests_attributes: {0 => {field: "Pattern Recognition"}}}
+  #Teacher.create!(id: n+1010, name: name, title: title, hiring_date: hiring_date, department_id: department_id})
+  #teacher_parameters = { name: "Kallin", title: "Professor", hiring_date: "11-11-2016", department_id: 1, degrees_attributes: {0 => {title: "Doctorate", date_awarded: "12-12-2017", university: "Sky University", field: "Computer Science"}}, interests_attributes: {0 => {field: "Pattern Recognition"}}}
 
-  #TeacherInterest.create!(field: "")
+  teacher_parameters = { id: n+2000, name: name, title: title, hiring_date: hiring_date, department_id: department_id, degrees_attributes: {0 => {title: "Doctorate", date_awarded: "12-12-2017", university: "Sky", field: "Computer Science"}}, interests_attributes: {0 => {field: "Pattern Recognition"}}}
+
+  t = Teacher.create!(teacher_parameters)
 
   email = "example-#{n+1}@teacher.org"
   password = "password"
@@ -71,5 +73,5 @@ end
     admin: false,
     student: false,
     profile_owner_type: "Teacher",
-    profile_owner_id: n+101)
+    profile_owner_id: n+2000)
 end
