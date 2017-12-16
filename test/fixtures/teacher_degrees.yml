@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  date_awarded: 2017-12-16
+  university: MyString
+  field: MyString
+
+two:
+  title: MyString
+  date_awarded: 2017-12-16
+  university: MyString
+  field: MyString

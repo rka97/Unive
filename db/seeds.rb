@@ -32,11 +32,11 @@ profile_owner_id: 1)
   year = Faker::Number.between(2013, 2018) # I am not exactly sure what "year" means.
   phone_number = Faker::Number.number(8) # a 14-digit number
   address = Faker::Address.street_address 
-  #birth_date = Date.parse(Faker::Date.birthday(17, 25))
   birth_date = Faker::Date.birthday(17,25)
-  Student.create!(id: n+101, name: name, section_number: section_number, bench_number: bench_number, gender: gender, year: year, phone_number: phone_number, address: address, birth_date: birth_date)
   
-  Enrollment.create!(degree: degree, department_id: (n%3+1), student_id: n+101)
+  student_parameters = { id: n+101, name: name, section_number: section_number, bench_number: bench_number, phone_number: phone_number, gender: gender, year: year, birth_date: birth_date, address: address, enrollments_attributes: {0 => {degree: degree, department_id: (n%3+1)}} }
+
+  Student.create!(student_parameters)
 
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -57,7 +57,10 @@ end
   title = "Professor"
   hiring_date = Faker::Date.between(5.year.ago, Date.today)
   department_id = Faker::Number.between(1, 3)
-  Teacher.create!(id: n+101, name: name, title: title, hiring_date: hiring_date, department_id: department_id)
+  Teacher.create!(id: n+1010, name: name, title: title, hiring_date: hiring_date, department_id: department_id})
+  teacher_parameters = { name: "Kalin", title: "Professor", hiring_date: "11-11-2016", department_id: 1, degrees_attributes: {0 => {title: "Doctorate", date_awarded: "12-12-2017", university: "Sky University", field: "Computer Science"}}, interests_attributes: {0 => {field: "Pattern Recognition"}}}
+
+  #TeacherInterest.create!(field: "")
 
   email = "example-#{n+1}@teacher.org"
   password = "password"
