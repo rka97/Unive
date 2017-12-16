@@ -20,10 +20,10 @@ Changelog:
 - [x] Make a student-department association (Enrollment model).
 - [x] Admin can search students.
 - [x] Admin can search users.
-- [ ] Admin can remove, edit, add students.
+- [x] Admin can remove, edit, add students.
+- [x] Admin can remove, edit, add enrollments.
 - [ ] Admin can remove, edit, add teachers.
 - [ ] Admin can remove, edit, add departments.
-- [ ] Admin can remove, edit, add enrollments.
 - [ ] Add courses model.
 - [ ] Add course enrollment model.
 - [ ] Admin can remove, edit, add courses.

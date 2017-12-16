@@ -15,7 +15,19 @@
         <%= f.text_field :address, class: 'form-control' %>
         <%= f.label :birth_date %>
         <%= f.date_field :birth_date, class: 'form-control' %>
-
+        <table class = 'table'>
+            <thead>
+                <tr>
+                    <th>Degree</th>
+                    <th>Department ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= f.fields_for :enrollments do |enrollment| %>
+                    <%= render 'enrollment_fields', f: enrollment %>
+                <% end %>
+            </tbody>
+        </table>
         <% if false %>
         <%= f.label :section_number %>
         <%= f.number_field :section_number, class: 'form-control' %>
