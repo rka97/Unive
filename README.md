@@ -34,6 +34,8 @@ Changelog:
 - [ ] Admin can assign teacher to a lecture.
 - [ ] Admin can ask teacher to confirm lecture time/place.
 - [ ] Admin can see students marks, can track which students are close to failing (or failed).
+- [ ] Add teams model.
+- [ ] Admin can browse teams and associated team coursework.
 - [ ] Make announcements model.
 - [ ] Admin can announce things to students.
 - [ ] Teachers can announce things to students.
