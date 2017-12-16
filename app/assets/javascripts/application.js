@@ -11,7 +11,6 @@
 // about supported directives.
 
 //= require jquery
-//= require cocoon
 //= require bootstrap
 //= require rails-ujs
 //= require turbolinks
