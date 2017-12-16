@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
     before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
 
     def show
+        @student = Student.find(params[:id])
     end
 
     def index

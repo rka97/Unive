@@ -2,13 +2,19 @@
 <div class="row">
     <aside class="col-md-4">
         <section class="user_info">             
-            <h1>
-                <%= gravatar_for @user %>
-                <%= @user.name %>
-            </h1>
+            <div class="container-fluid jumbotron text-center">
+                <div class="row">
+                    <%= gravatar_for @user, size: 250, class: "rounded img-fluid" %>
+                </div>
+            </div>
         </section>
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+            <%= render 'user_info', user: @user %>
+            </tbody>
+        </table>
     </aside>
-    <div class = "col-md-4" style="margin-top: 20px;">
-        <%= @user.name %>, <%= @user.email %>
+    <div class = "col-md-8" style="margin-top: 20px;">
+        Lorem ipsum.
     </div>
 </div>

@@ -1,9 +1,29 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
-<%= will_paginate %>
+<% provide(:title, 'Users') %>
+<h1>Users</h1>
 <ul class="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-  <% end %>
-<%= will_paginate %>
+  <%= render 'search' %>
+  <br />
+  <table class = "table">
+    <thead>
+      <tr>
+        <th><%=sort_link(@q, :id, "id")%></th>
+        <th><%=sort_link(@q, :name)%></th>
+        <th><%=sort_link(@q, :email)%></th>
+        <th><%=sort_link(@q, :profile_owner_type, "Owner Type")%></th>
+        <th><%=sort_link(@q, :profile_owner_id, "Owner Id")%></th>
+        <th><%=sort_link(@q, :created_at)%></th>
+        <th><%=sort_link(@q, :updated_at)%></th>
+        <th><%=sort_link(@q, :admin)%></th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Avatar</th>
+      </tr>
+      </thead>
+    <tbody>
+        <% @users.each do |user| %>
+          <%= render user %>
+        <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
 </ul>
