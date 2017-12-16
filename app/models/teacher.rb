@@ -1,5 +1,5 @@
 class Teacher < ApplicationRecord
-  has_one :user, as: :profile_owner
+  has_one :user, as: :profile_owner, dependent: :delete
   belongs_to :department, optional: false
   has_many :degrees, :class_name => "TeacherDegree", foreign_key: "teacher_id", dependent: :delete_all, inverse_of: :teacher
   has_many :interests, :class_name => "TeacherInterest", foreign_key: "teacher_id", dependent: :delete_all, inverse_of: :teacher

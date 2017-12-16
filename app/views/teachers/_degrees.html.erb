@@ -1,0 +1,21 @@
+<table class = "table table-bordered table-responsive">
+<thead>
+    <h4>Past Degrees</h4>
+    <tr>
+        <td><strong>Degree</strong></td>
+        <td><strong>Field</strong></td>
+        <td><strong>University</strong></td>
+        <td><strong>Date Awarded</strong></td>
+    </tr>
+</thead>
+    <tbody>
+        <% teacher.degrees.each do |degree| %>
+        <tr>
+            <td><%= degree.title %></td>
+            <td><%= degree.field %></td>
+            <td><%= degree.university %></td>
+            <td><%= degree.date_awarded %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

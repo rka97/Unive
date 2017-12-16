@@ -20,9 +20,9 @@ Changelog:
 - [x] Admin can search users.
 - [x] Admin can remove, edit, add students.
 - [x] Admin can remove, edit, add enrollments.
-- [ ] Add teacher degrees to model.
-- [ ] Add teacher research interests to model.
-- [ ] Admin can remove, edit, add teachers.
+- [x] Add teacher degrees to model.
+- [x] Add teacher research interests to model.
+- [x] Admin can remove, edit, add teachers.
 - [ ] Admin can remove, edit, add departments.
 - [ ] Add courses model.
 - [ ] Add coursework, course notes to course model.

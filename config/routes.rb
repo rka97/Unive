@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get 'teachers/index'
-  get 'students/index'
   delete '/user', to: 'users#destroy'
+  get 'students/index'
   post 'students/new', to: 'students#create'
+  get 'teachers/index'
+  post 'teachers/new', to: 'teachers#create'
 end

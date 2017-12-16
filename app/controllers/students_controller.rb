@@ -27,7 +27,6 @@ class StudentsController < ApplicationController
 
     def edit
         @student = Student.find(params[:id])
-        enr = @student.enrollments.to_a
         3.times do |i|
             if (@student.enrollments[i].nil?)
                 @student.enrollments << Enrollment.new
