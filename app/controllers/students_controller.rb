@@ -5,6 +5,21 @@ class StudentsController < ApplicationController
         @student = Student.find(params[:id])
     end
 
+    def new
+        @student = Student.new
+        @student.enrollments = [Enrollment.new, Enrollment.new, Enrollment.new]
+    end
+
+    def create
+        @student = Student.new(student_params)
+        if @student.save
+          flash[:success] = "Student Added."
+          redirect_to @student
+        else
+          render 'new'
+        end
+    end
+
     def index
         @q = Student.ransack(params[:q])
         @students = @q.result(distinct: true).paginate(page: params[:page])
@@ -32,6 +47,6 @@ class StudentsController < ApplicationController
 
     private
     def student_params
-        params.require(:student).permit(:name, :section_number, :bench_number, :gender, :year, :phone_number, :address, :birth_date, :search)
+        params.require(:student).permit(:name, :section_number, :bench_number, :gender, :year, :phone_number, :address, :birth_date, :search, enrollments_attributes: [:id, :degree, :department_id, :_destroy])
     end
 end

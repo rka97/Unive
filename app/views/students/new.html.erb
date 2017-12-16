@@ -1,0 +1,43 @@
+<% provide(:title, "New Student") %>
+<h1>New Student</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@student) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.label :gender %>
+        <%= f.text_field :gender, class: 'form-control' %>
+        <%= f.label :phone_number %>
+        <%= f.number_field :phone_number, class: 'form-control' %>
+        <%= f.label :address %>
+        <%= f.text_field :address, class: 'form-control' %>
+        <%= f.label :birth_date %>
+        <%= f.date_field :birth_date, class: 'form-control' %>
+        <%= f.label :year %>
+        <%= f.date_field :year, class: 'form-control' %>
+        <%= f.label :section_number %>
+        <%= f.number_field :section_number, class: 'form-control' %>
+        <%= f.label :bench_number %>
+        <%= f.number_field :bench_number, class: 'form-control' %>
+        <table class = 'table'>
+            <thead>
+                <tr>
+                    <th>Degree</th>
+                    <th>Department ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= f.fields_for :enrollments do |enrollment| %>
+                    <%= render 'enrollment_fields', f: enrollment %>
+                <% end %>
+            </tbody>
+        </table>
+
+        <%= f.submit "Create Student", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%#= e.select :department_id, Department.all.collect { |d| [ d.name, d.id ] }, include_blank: true %> 

@@ -19,7 +19,8 @@ Changelog:
 - [x] Make a seeding script for the database that initializes a few students, a few teachers, a few users, and an administrator.
 - [x] Make a student-department association (Enrollment model).
 - [x] Admin can search students.
-- [x] Admin can remove, edit, add students.
+- [x] Admin can search users.
+- [ ] Admin can remove, edit, add students.
 - [ ] Admin can remove, edit, add teachers.
 - [ ] Admin can remove, edit, add departments.
 - [ ] Admin can remove, edit, add enrollments.
