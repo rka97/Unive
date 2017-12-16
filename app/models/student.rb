@@ -5,4 +5,5 @@ class Student < ApplicationRecord
     validates :enrollments, presence: true
     validates_format_of :gender, :with => /\Amale\Z|\Afemale\Z|\Ana\Z/i
     accepts_nested_attributes_for :enrollments, allow_destroy: true, reject_if: proc { |a| a[:degree].blank? }
+    before_save { self.gender = self.gender.downcase }
 end
