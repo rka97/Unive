@@ -2,11 +2,9 @@
 
 To-do:
 Make an administrator able to do the following:
-- [ ] Manage the number and academic standing of students in various classes.
+- [x] Manage the number and academic standing of students in various departments.
 - [ ] Add or remove subjects, assign professors as well as teaching assistants to certain subjects in certain times, notify them and ask for their confirmation.
 - [ ] Manage and alter the timetables, notify professors and students of it, ask for confirmation from professors as well as class representatives.
-- [ ] See a list of assigned textbooks, their availability in the library. Add and remove textbooks from the library, keep track of arrivals.
-- [ ] Add notifications of trips and other social occasions, manage the number of attendees, the payment needed, keep track of who paid and who didn’t, and notify those who don’t.
 - [ ] Track which students are failing and require extra intervention or notification, as well which students have overdue fees or not enough class attendance.
 - [ ] Ban or discipline students for certain periods of time. Delete messages from the chat room.
 
@@ -22,8 +20,23 @@ Changelog:
 - [x] Admin can search users.
 - [x] Admin can remove, edit, add students.
 - [x] Admin can remove, edit, add enrollments.
+- [ ] Add teacher degrees to model.
+- [ ] Add teacher research interests to model.
 - [ ] Admin can remove, edit, add teachers.
 - [ ] Admin can remove, edit, add departments.
 - [ ] Add courses model.
+- [ ] Add coursework, course notes to course model.
 - [ ] Add course enrollment model.
 - [ ] Admin can remove, edit, add courses.
+- [ ] Admin can assign teachers to courses.
+- [ ] Admin can remove teachers from courses.
+- [ ] Admin can manage number of lectures in a course.
+- [ ] Admin can assign teacher to a lecture.
+- [ ] Admin can ask teacher to confirm lecture time/place.
+- [ ] Admin can see students marks, can track which students are close to failing (or failed).
+- [ ] Make announcements model.
+- [ ] Admin can announce things to students.
+- [ ] Teachers can announce things to students.
+- [ ] Admin can ban students.
+- [ ] Integrate chatroom.
+- [ ] Clean up schema.
