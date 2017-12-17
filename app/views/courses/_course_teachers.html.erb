@@ -1,10 +1,14 @@
 <h3>Course Teachers</h3> <br />
-<br />
+<p>Add teacher to course</p>
+
 <table class = "table table-bordered table-responsive">
     <thead>
     <tr>
         <th><%=sort_link(@qteachers, :id)%></th>
         <th><%=sort_link(@qteachers, :name)%></th>
+        <% if current_user.admin? %>
+        <th>Remove from Course</th>
+        <% end %>
     </tr>
     </thead>
     <tbody>
@@ -12,6 +16,9 @@
             <tr>
                 <th scope="row"><%= teacher.id %></th>
                 <td><%= link_to teacher.name, teacher %></td>
+                <% if current_user.admin? %>
+                <td><%= link_to "Delete", teacher_course_path(id: (teacher.teacher_courses.find_by(course_id: @course.id)).id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>
