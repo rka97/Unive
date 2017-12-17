@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, :students, :teachers, :employees
+  resources :users, :students, :teachers, :employees, :departments
   resources :students do
     get 'enrollments', on: :member
   end
@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   post 'students/new', to: 'students#create'
   get 'teachers/index'
   post 'teachers/new', to: 'teachers#create'
+  get 'departments/index'
+  post 'departments/new', to: 'departments#create'
 end

@@ -1,0 +1,28 @@
+<% provide(:title, 'Departments') %>
+<h1>Departments</h1>
+<ul class="users">
+  <%= render 'search' %>
+  <br />
+  <br />
+  <table class = "table">
+    <thead>
+      <tr>
+        <th><%=sort_link(@q, :id, "id")%></th>
+        <th><%=sort_link(@q, :name)%></th>
+        <th><%=sort_link(@q, :abbreviation)%></th>
+        <th><%=sort_link(@q, :created_at)%></th>
+        <th><%=sort_link(@q, :updated_at)%></th>
+        <th>Courses</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+    <tbody>
+        <tr><%= link_to "Add a New Department", departments_new_path, class: "btn btn-primary btn-md text-center" %></tr>
+        <% @departments.each do |department| %>
+          <%= render department %>
+        <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+</ul>

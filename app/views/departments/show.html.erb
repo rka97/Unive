@@ -1,0 +1,28 @@
+<% provide(:title, @department.name) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">             
+            <h1 class="jumbotron text-center">
+                <%= @department.name %> 
+            </h1>
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+            <%= render 'department_info', department: @department %>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class = "col-md-8 text-center" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-md-6">
+                <%= render 'department_students' %>
+            </div>
+            <div class="col-md-6">
+                <%= render 'department_teachers' %>
+            </div>
+        </div>
+        <div class="row">
+            Show the department's courses he teaches here.
+        </div>
+    </div>
+</div>

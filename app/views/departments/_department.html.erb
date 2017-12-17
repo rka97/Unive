@@ -1,0 +1,18 @@
+<tr>
+  <th scope="row"><%= department.id %></th>
+  <td><%= link_to department.name, department %></td>
+  <td><%= department.abbreviation %></td>
+  <td><%= department.created_at.to_date %></td>
+  <td><%= department.updated_at.to_date %></td>
+  <td>
+    <div class = "form-group">
+      <select class = "form-control">
+          <% department.enrollments.each do |enrollment| %>
+            <option class><%= enrollment.student.name %></option>
+          <% end %>
+      </select>
+    </div>
+  </td>
+  <td><%= link_to "Edit", edit_department_path(department) %></td>
+  <td><%= link_to "Delete", department_path(id: department.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>
