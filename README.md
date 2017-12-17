@@ -24,7 +24,7 @@ Changelog:
 - [x] Add teacher research interests to model.
 - [x] Admin can remove, edit, add teachers.
 - [x] Admin can remove, edit, add departments.
-- [ ] Add courses model.
+- [x] Add courses model.
 - [ ] Add coursework, course notes to course model.
 - [ ] Add course enrollment model.
 - [ ] Admin can remove, edit, add courses.

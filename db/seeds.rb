@@ -85,6 +85,13 @@ end
 
   t = Teacher.create!(teacher_parameters)
 
+  # Make him teach a few courses
+  15.times do |j|
+    courses_taught_params = { course_id: Faker::Number.between(1, 40), teacher_id: t.id }
+    tc = TeacherCourse.create!(courses_taught_params)
+    t.teacher_courses << tc
+  end
+
   email = "example-#{n+1}@teacher.org"
   password = "password"
   User.create!(name:  name,
