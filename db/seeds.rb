@@ -22,6 +22,20 @@ student: false,
 profile_owner_type: "Employee",
 profile_owner_id: 1)
 
+
+# Make a few courses
+3.times do |i|
+  40.times do |j|
+    department_id = i+1
+    code = Department.find(department_id).abbreviation + (Faker::Number.between(1, 4)*100 + Faker::Number.number(2)).to_s
+    title = "Fundamentals of " + Faker::Ancient.hero
+    credit_hours = Faker::Number.between(1, 3)
+    total_mark = Faker::Number.between(1, 3) * 100
+    course_parameters = { code: code, title: title, credit_hours: credit_hours, total_mark: total_mark, department_id: department_id }
+    Course.create!(course_parameters)
+  end
+end
+
 # Generate a few random students and their profiles
 99.times do |n|
   name  = Faker::Name.name
@@ -33,10 +47,18 @@ profile_owner_id: 1)
   phone_number = Faker::Number.number(8) # a 14-digit number
   address = Faker::Address.street_address 
   birth_date = Faker::Date.birthday(17,25)
+  department_id = Faker::Number.between(1, 3)
   
-  student_parameters = { id: n+101, name: name, section_number: section_number, bench_number: bench_number, phone_number: phone_number, gender: gender, year: year, birth_date: birth_date, address: address, enrollments_attributes: {0 => {degree: degree, department_id: (n%3+1)}} }
+  student_parameters = { id: n+101, name: name, section_number: section_number, bench_number: bench_number, phone_number: phone_number, gender: gender, year: year, birth_date: birth_date, address: address, enrollments_attributes: {0 => {degree: degree, department_id: department_id}} }
 
-  Student.create!(student_parameters)
+  st = Student.create!(student_parameters)
+
+  # Make a few course enrollments
+  15.times do |j|
+    course_enrollment_params = { course_id: Faker::Number.between(1, 40), student_id: n+101, status: (Faker::Boolean.boolean) ? 'Enrolled' : 'Passed' }
+    ste = StudentCourseEnrollment.create!(course_enrollment_params)
+    st.course_enrollments << ste
+  end
 
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -49,7 +71,6 @@ profile_owner_id: 1)
     profile_owner_type: "Student",
     profile_owner_id: n+101)
 end
-
 
 # Generate a few random teachers and their profiles
 99.times do |n|

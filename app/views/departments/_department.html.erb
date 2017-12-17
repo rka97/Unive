@@ -7,8 +7,8 @@
   <td>
     <div class = "form-group">
       <select class = "form-control">
-          <% department.enrollments.each do |enrollment| %>
-            <option class><%= enrollment.student.name %></option>
+          <% department.courses.each do |course| %>
+            <option class><%= course.code %> | <%= course.title %></option>
           <% end %>
       </select>
     </div>
