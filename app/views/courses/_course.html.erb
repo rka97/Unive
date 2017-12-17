@@ -1,0 +1,12 @@
+<tr>
+  <th scope="row"><%= course.id %></th>
+  <td><%= link_to course.code, course %></td>
+  <td><%= course.title %></td>
+  <td><%= course.credit_hours %></td>
+  <td><%= course.total_mark %></td>
+  <td><%= link_to course.department.name, course.department %></td>
+  <td><%= course.created_at.to_date %></td>
+  <td><%= course.updated_at.to_date %></td>
+  <td><%= link_to "Edit", edit_course_path(course) %></td>
+  <td><%= link_to "Delete", course_path(id: course.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>

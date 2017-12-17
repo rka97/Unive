@@ -27,7 +27,7 @@ profile_owner_id: 1)
 3.times do |i|
   40.times do |j|
     department_id = i+1
-    code = Department.find(department_id).abbreviation + (Faker::Number.between(1, 4)*100 + Faker::Number.number(2)).to_s
+    code = Department.find(department_id).abbreviation + (Faker::Number.number(3)).to_s
     title = "Fundamentals of " + Faker::Ancient.hero
     credit_hours = Faker::Number.between(1, 3)
     total_mark = Faker::Number.between(1, 3) * 100

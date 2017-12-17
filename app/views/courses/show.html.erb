@@ -1,0 +1,30 @@
+<% provide(:title, @course.title) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">             
+            <h1 class="jumbotron text-center">
+                <%= @course.title %> 
+            </h1>
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+            <%= render 'course_info', course: @course %>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class = "col-md-8 text-center" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-md-6">
+                <%= render 'course_students' %>
+                Add student to course
+            </div>
+            <div class="col-md-6">
+                <%= render 'course_teachers' %>
+                Add teacher to course
+            </div>
+        </div>
+        <div class="row">
+            Show some statistical data here.
+        </div>
+    </div>
+</div>

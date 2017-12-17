@@ -25,9 +25,9 @@ Changelog:
 - [x] Admin can remove, edit, add teachers.
 - [x] Admin can remove, edit, add departments.
 - [x] Add courses model.
+- [x] Admin can remove, edit, add courses.
 - [ ] Add coursework, course notes to course model.
 - [ ] Add course enrollment model.
-- [ ] Admin can remove, edit, add courses.
 - [ ] Admin can assign teachers to courses.
 - [ ] Admin can remove teachers from courses.
 - [ ] Admin can manage number of lectures in a course.

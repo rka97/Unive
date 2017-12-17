@@ -1,0 +1,19 @@
+<h3>Course Teachers</h3> <br />
+<br />
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(@qteachers, :id)%></th>
+        <th><%=sort_link(@qteachers, :name)%></th>
+    </tr>
+    </thead>
+    <tbody>
+        <% @teachers.each do |teacher| %>
+            <tr>
+                <th scope="row"><%= teacher.id %></th>
+                <td><%= link_to teacher.name, teacher %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @teachers, :param_name => "teachers_page" %>
