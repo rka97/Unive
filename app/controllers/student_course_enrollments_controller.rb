@@ -3,6 +3,7 @@ class StudentCourseEnrollmentsController < ApplicationController
 
     def new
         @scenrollment = StudentCourseEnrollment.new
+        @course = Course.find(params[:course])
     end
 
     def create
@@ -11,7 +12,7 @@ class StudentCourseEnrollmentsController < ApplicationController
             flash[:success] = @scenrollment.student.name + " is now enrolled in " + @scenrollment.course.name
             redirect_back fallback_location: courses_url
         else
-            render 'new'
+            redirect_back fallback_location: courses_url
         end
     end
     

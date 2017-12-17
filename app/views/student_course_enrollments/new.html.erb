@@ -1,0 +1,27 @@
+<% provide(:title, "Add Student to Course") %>
+<h1>Add Student to <%= @course.code %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@scenrollment) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :student %>
+        <%= f.select :student_id, Student.all.collect { |s| [ s.name + " | " + s.id.to_s, s.id ] }, include_blank: false, class: 'form-control' %>
+        <%= f.label :status %>
+        <%= f.select :status, [['Passed', 'Passed'], ['Failed', 'Failed'], ['Current', 'Current']], include_blank: false, class: 'form-control' %>
+        <%= f.label :course %>
+        <div class="form-group">
+        <label for="disabledSelect">Disabled select menu</label>
+        <select id="disabledSelect" class="form-control">
+            <option>Disabled select</option>
+        </select>
+        </div>
+        <fieldset disabled>
+        <%= f.select :course_id, [[@course.code, @course.id]], {}, id: 'disabledSelect' %>
+        </fieldset>
+        <%= f.submit "Add Student", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%#= e.select :department_id, Department.all.collect { |d| [ d.name, d.id ] }, include_blank: true %> 
