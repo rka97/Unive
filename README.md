@@ -1,5 +1,6 @@
 # README
 
+# Admin functions
 To-do:
 Make an administrator able to do the following:
 - [x] Manage the number and academic standing of students in various departments.
