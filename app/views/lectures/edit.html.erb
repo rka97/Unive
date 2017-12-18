@@ -1,0 +1,19 @@
+<% provide(:title, "Edit Lecture - " + @course.code) %>
+<h1>Edit Lecture - <%= link_to @course.code, @course %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@lecture) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :place %>
+        <%= f.text_field :place, class: 'form-control' %>
+        <%= f.label :lec_time, 'Lecture Date & Time' %>
+        <%= f.datetime_field :lec_time, class: 'form-control' %>
+        <%= f.label :note, 'Note (if any)' %>
+        <%= f.text_field :note, class: 'form-control' %>
+        <%= f.label :teacher %>
+        <%= f.select :teacher_id, (@course.teachers).collect { |t| [ t.name, t.id ] }, include_blank: false %>
+        <%= f.submit "Save Changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

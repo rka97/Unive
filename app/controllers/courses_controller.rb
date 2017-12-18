@@ -10,7 +10,9 @@ class CoursesController < ApplicationController
         @cws = (@course.courseworks).ransack(params[:q])
         @courseworks = @cws.result(distinct: true).paginate(page: params[:courseworks_page], per_page: 5)
         @cns = (@course.course_notes).ransack(params[:q])
-        @coursenotes = @cns.result(distinct: true).paginate(page: params[:courseworks_page], per_page: 5)
+        @coursenotes = @cns.result(distinct: true).paginate(page: params[:coursenotes_page], per_page: 5)
+        @lcs = (@course.lectures).ransack(params[:q])
+        @lectures = @lcs.result(distinct: true).paginate(page: params[:lectures_page], per_page: 5)
     end
     
     def new

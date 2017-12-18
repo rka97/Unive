@@ -1,0 +1,32 @@
+<h3>Lectures</h3>
+<p><%= link_to "Add New Lecture", new_lecture_path(:course => @course), class: "btn btn-primary" %></p>
+
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(@lcs, :lec_id, 'Id')%></th>
+        <th><%=sort_link(@lcs, :place, 'Place')%></th>
+        <th><%=sort_link(@lcs, :lec_time, 'Time')%></th>
+        <th><%=sort_link(@lcs, :teacher_name, 'Teacher')%></th>
+        <% if current_user.admin? %>
+            <th>Edit</th>
+            <th>Remove</th>
+        <% end %>
+    </tr>
+    </thead>
+    <tbody>
+        <% @lectures.each do |lecture| %>
+            <tr>
+                <th scope="row"><%= link_to lecture.id, lecture %></th>
+                <td><%= lecture.place %></td>
+                <td><%= lecture.lec_time %></td>
+                <td><%= link_to lecture.teacher.name, lecture.teacher %></td>
+                <% if current_user.admin? %>
+                    <td><%= link_to "Edit", edit_lecture_path(id: lecture.id) %></td>
+                    <td><%= link_to "Delete", lecture_path(id: lecture.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @lectures, :param_name => "lectures_page" %>

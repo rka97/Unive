@@ -43,8 +43,8 @@ Changelog:
 - [ ] Admin can browse teams and associated team coursework.
 - [ ] Make announcements model.
 - [ ] Admin can announce things to students.
-- [ ] Teachers can announce things to students.
 - [ ] Admin can ban students.
+- [ ] Admin can browse friendships among users.
 - [ ] Integrate chatroom.
 - [ ] Clean up schema.
 
@@ -52,3 +52,4 @@ Changelog:
 - [ ] Add course prerequisites.
 - [ ] Add comments on course notes and lectures.
 - [ ] Add file uploading on course notes.
+- [ ] Add locations on campus.

@@ -1,0 +1,55 @@
+<% provide(:title, 'Lecture - ' + @lecture.course.code ) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="users_info">
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+                <tr>
+                    <td>Id</td>
+                    <td><%= @lecture.id %></td>
+                </tr>
+                <tr>
+                    <td>Place</td>
+                    <td><%= @lecture.place %></td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td><%= @lecture.lec_time %></td>
+                </tr>
+                <tr>
+                    <td>Teacher</td>
+                    <td><%= link_to @lecture.teacher.name, @lecture.teacher %></td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td><%= link_to @lecture.course.code, @lecture.course %></td>
+                </tr>
+                <tr>
+                    <td>Created</td>
+                    <td><%= @lecture.created_at %></td>
+                </tr>
+                <tr>
+                    <td>Last Updated</td>
+                    <td><%= @lecture.updated_at %></td>
+                </tr>
+                <% if current_user.admin? %>
+                <tr>
+                    <td>Edit</td>
+                    <td><%= link_to "Edit", edit_lecture_path(id: @lecture.id) %></td>
+                </tr>
+                <tr>
+                    <td>Delete</td>
+                    <td><%= link_to "Delete", lecture_path(id: @lecture.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class = "col-md-7 text-center" style="margin-top: 20px;">
+        <div class="row">
+                <%= @lecture.note %>
+            <%# Show attendance here.. %>
+        </div>
+    </div>
+</div>

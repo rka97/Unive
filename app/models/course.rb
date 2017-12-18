@@ -6,5 +6,6 @@ class Course < ApplicationRecord
     has_many :teachers, through: :teacher_courses
     has_many :courseworks, dependent: :delete_all
     has_many :course_notes, dependent: :delete_all
+    has_many :lectures, dependent: :delete_all
     alias_attribute :coursenotes, :course_notes
 end
