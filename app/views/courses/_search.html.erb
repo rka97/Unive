@@ -15,5 +15,13 @@
     <div class="col-sm-10">
      <%= f.search_field :department_name_cont, class: 'form-control' %>
     </div>
+    <%= f.label :students_name_cont, class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+     <%= f.search_field :students_name_cont, class: 'form-control' %>
+    </div>
+    <%= f.label :teachers_name_cont, class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+     <%= f.search_field :teachers_name_cont, class: 'form-control' %>
+    </div>
     <%= f.submit class: 'btn btn-primary', type: 'submit' %>
 <% end %>

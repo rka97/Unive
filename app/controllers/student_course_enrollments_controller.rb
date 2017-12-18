@@ -4,12 +4,14 @@ class StudentCourseEnrollmentsController < ApplicationController
     def new
         @scenrollment = StudentCourseEnrollment.new
         @course = Course.find(params[:course])
+        students_to_add = Student.all.reject{|x| @course.students.include? x }
+        @students = students_to_add.collect {|s| [ s.name + " | " + s.id.to_s, s.id ]}
     end
 
     def create
         @scenrollment = StudentCourseEnrollment.new(student_course_enrollment_params)
         if @scenrollment.save
-            flash[:success] = @scenrollment.student.name + " is now enrolled in " + @scenrollment.course.name
+            flash[:success] = @scenrollment.student.name + " is now enrolled in " + @scenrollment.course.code
             redirect_back fallback_location: courses_url
         else
             redirect_back fallback_location: courses_url
@@ -18,6 +20,7 @@ class StudentCourseEnrollmentsController < ApplicationController
     
     def edit
         @scenrollment = StudentCourseEnrollment.find(params[:id])
+        @student = @scenrollment.student
     end
 
     def update

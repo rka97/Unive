@@ -3,10 +3,10 @@ class CoursesController < ApplicationController
     
     def show
         @course = Course.find(params[:id])
-        @q = (@course.students).ransack(params[:q])
+        @q = @course.students.ransack(params[:q])
         @students = @q.result(distinct: true).paginate(page: params[:students_page], per_page: 5)
-        @qteachers = (@course.teachers).ransack(params[:qteachers])
-        @teachers = @qteachers.result(distinct: true).paginate(page: params[:teachers_page], per_page: 5)
+        @ts = (@course.teachers).ransack(params[:q])
+        @teachers = @ts.result(distinct: true).paginate(page: params[:teachers_page], per_page: 5)
     end
     
     def new

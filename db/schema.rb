@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217160748) do
+ActiveRecord::Schema.define(version: 20171217234441) do
 
   create_table "courses", force: :cascade do |t|
     t.string "code", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171217160748) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id", "student_id"], name: "index_student_course_enrollments_on_course_id_and_student_id", unique: true
     t.index ["course_id"], name: "index_student_course_enrollments_on_course_id"
     t.index ["student_id"], name: "index_student_course_enrollments_on_student_id"
   end
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171217160748) do
     t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date_taught", default: "2017-11-11", null: false
     t.index ["course_id"], name: "index_teacher_courses_on_course_id"
     t.index ["teacher_id"], name: "index_teacher_courses_on_teacher_id"
   end
@@ -87,7 +89,7 @@ ActiveRecord::Schema.define(version: 20171217160748) do
     t.date "date_awarded", null: false
     t.string "university", null: false
     t.string "field", null: false
-    t.integer "teacher_id", null: false
+    t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["teacher_id"], name: "index_teacher_degrees_on_teacher_id"
@@ -95,7 +97,7 @@ ActiveRecord::Schema.define(version: 20171217160748) do
 
   create_table "teacher_interests", force: :cascade do |t|
     t.string "field", null: false
-    t.integer "teacher_id", null: false
+    t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["teacher_id"], name: "index_teacher_interests_on_teacher_id"

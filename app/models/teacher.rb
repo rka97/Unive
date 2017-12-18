@@ -10,4 +10,6 @@ class Teacher < ApplicationRecord
   validates :degrees, presence: true
   validates :interests, presence: true
   validates :name, presence: true, length: {maximum: 50}
+  alias_attribute :teacher_id, :id
+  alias_attribute :teacher_name, :name
 end

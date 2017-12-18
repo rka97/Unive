@@ -55,10 +55,11 @@ end
 
   # Make a few course enrollments
   15.times do |j|
-    course_enrollment_params = { course_id: Faker::Number.between(1, 40), student_id: n+101, status: (Faker::Boolean.boolean) ? 'Enrolled' : 'Passed' }
+    course_enrollment_params = { course_id: Faker::Number.unique.between(1, 40), student_id: n+101, status: (Faker::Boolean.boolean) ? 'Enrolled' : 'Passed' }
     ste = StudentCourseEnrollment.create!(course_enrollment_params)
     st.course_enrollments << ste
   end
+  Faker::Number.unique.clear
 
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -87,10 +88,11 @@ end
 
   # Make him teach a few courses
   15.times do |j|
-    courses_taught_params = { course_id: Faker::Number.between(1, 40), teacher_id: t.id }
+    courses_taught_params = { course_id: Faker::Number.unique.between(1, 119), teacher_id: t.id, date_taught: Faker::Date.between(5.year.ago, Date.today) }
     tc = TeacherCourse.create!(courses_taught_params)
     t.teacher_courses << tc
   end
+  Faker::Number.unique.clear
 
   email = "example-#{n+1}@teacher.org"
   password = "password"
