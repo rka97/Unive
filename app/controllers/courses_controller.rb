@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
         @students = @q.result(distinct: true).paginate(page: params[:students_page], per_page: 5)
         @ts = (@course.teachers).ransack(params[:q])
         @teachers = @ts.result(distinct: true).paginate(page: params[:teachers_page], per_page: 5)
+        @cws = (@course.courseworks).ransack(params[:q])
+        @courseworks = @cws.result(distinct: true).paginate(page: params[:courseworks_page], per_page: 5)
     end
     
     def new

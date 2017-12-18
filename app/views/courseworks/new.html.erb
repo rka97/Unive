@@ -1,0 +1,25 @@
+<% provide(:title, "Add Coursework to " + @course.code) %>
+<h1>Add Coursework to <%= link_to @course.code, @course %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@coursework) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :date_due %>
+        <%= f.date_field :date_due, class: 'form-control' %>
+        <%= f.label :date_assigned %>
+        <%= f.date_field :date_assigned, class: 'form-control' %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form-control' %>
+        <%= f.label :weight %>
+        <%= f.number_field :weight, class: 'form-control', step: 0.001 %>
+        <%= f.label :total_mark %>
+        <%= f.number_field :total_mark, class: 'form-control' %>
+        <%= f.label :course %>
+        <%= f.select :course_id, [[@course.code, @course.id]], {}, class: 'disabled-input' %>
+        <%= f.submit "Add Coursework", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<h3>Courseworks</h3>
+<p><%= link_to "Add New Coursework", new_coursework_path(:course => @course), class: "btn btn-primary" %></p>
+
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(@cws, :cw_id, 'Id')%></th>
+        <th><%=sort_link(@cws, :cw_title, 'Title')%></th>
+        <th><%=sort_link(@cws, :date_due, 'Due')%></th>
+        <th><%=sort_link(@cws, :date_assigned, 'Assigned')%></th>
+        <th>Description</th>
+        <th><%=sort_link(@cws, :weight, 'Weight')%></th>
+        <th>Total Mark</th>
+        <% if current_user.admin? %>
+            <th>Edit</th>
+            <th>Remove</th>
+        <% end %>
+    </tr>
+    </thead>
+    <tbody>
+        <% @courseworks.each do |coursework| %>
+            <tr>
+                <th scope="row"><%= coursework.id %></th>
+                <td><%= coursework.title %></td>
+                <td><%= coursework.date_due %></td>
+                <td><%= coursework.date_assigned %></td>
+                <td><%= coursework.description %></td>
+                <td><%= coursework.weight %></td>
+                <td><%= coursework.total_mark %></td>
+                <% if current_user.admin? %>
+                    <td><%= link_to "Edit", edit_coursework_path(id: (coursework.id)) %></td>
+                    <td><%= link_to "Delete", coursework_path(id: (coursework.id)), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @courseworks, :param_name => "courseworks_page" %>

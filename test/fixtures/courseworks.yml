@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_due: 2017-12-18
+  date_assigned: 2017-12-18
+  description: MyString
+  weight: 
+  total_mark: 1
+
+two:
+  date_due: 2017-12-18
+  date_assigned: 2017-12-18
+  description: MyString
+  weight: 
+  total_mark: 1

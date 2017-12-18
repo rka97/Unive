@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, :students, :teachers, :employees, :departments, :courses, :student_course_enrollments, :teacher_courses
+  resources :users, :students, :teachers, :employees, :departments, :courses, :student_course_enrollments, :teacher_courses, :courseworks
   resources :students do
     get 'enrollments', on: :member
   end
