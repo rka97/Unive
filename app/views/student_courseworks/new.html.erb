@@ -1,0 +1,19 @@
+<% provide(:title, "Student Submission - " + @coursework.title) %>
+<h1>Add submission to <%= link_to @coursework.title, @coursework %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@student_coursework) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :date_handed %>
+        <%= f.date_field :date_handed, class: 'form-control' %>
+        <%= f.label :mark %>
+        <%= f.number_field :mark, class: 'form-control', step: 0.01 %>
+        <%= f.label :student %>
+        <%= f.select :student_id, @students, {}, class: 'form-control' %>
+        <%= f.label :coursework_id %>
+        <%= f.select :coursework_id, [[@coursework.title + ' - ' + @coursework.course.code, @coursework.id]], {}, class: 'disabled-input form-control' %>
+        <%= f.submit "Add Submission", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

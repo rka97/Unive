@@ -1,0 +1,50 @@
+<tr>
+    <td>Id</td>
+    <td><%= coursework.id %></td>
+</tr>
+<tr>
+    <td>Title</td>
+    <td><%= coursework.title %></td>
+</tr>
+<tr>
+    <td>Due</td>
+    <td><%= coursework.date_due %></td>
+</tr>
+<tr>
+    <td>Assigned</td>
+    <td><%= coursework.date_assigned %></td>
+</tr>
+<tr>
+    <td>Description</td>
+    <td><%= coursework.description %></td>
+</tr>
+<tr>
+    <td>Weight</td>
+    <td><%= coursework.weight %></td>
+</tr>
+<tr>
+    <td>Total Mark </td>
+    <td><%= coursework.total_mark %></td>
+</tr>
+<tr>
+    <td>Course</td>
+    <td><%= link_to coursework.course.code, coursework.course %></td>
+</tr>
+<tr>
+    <td>Record Creation Date</td>
+    <td><%= coursework.created_at.to_date %></td>
+</tr>
+<tr>
+    <td>Record Update Date</td>
+    <td><%= coursework.updated_at.to_date %></td>
+</tr>
+<% if current_user.admin? %>
+<tr>
+    <td>Edit</td>
+    <td><%= link_to "Edit", edit_coursework_path(id: (coursework.id)) %></td>
+</tr>
+<tr>
+    <td>Delete</td>
+    <td><%= link_to "Delete", coursework_path(id: (coursework.id)), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>
+<% end %>

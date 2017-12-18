@@ -8,7 +8,6 @@
         <th><%=sort_link(@cws, :cw_title, 'Title')%></th>
         <th><%=sort_link(@cws, :date_due, 'Due')%></th>
         <th><%=sort_link(@cws, :date_assigned, 'Assigned')%></th>
-        <th>Description</th>
         <th><%=sort_link(@cws, :weight, 'Weight')%></th>
         <th>Total Mark</th>
         <% if current_user.admin? %>
@@ -21,10 +20,9 @@
         <% @courseworks.each do |coursework| %>
             <tr>
                 <th scope="row"><%= coursework.id %></th>
-                <td><%= coursework.title %></td>
+                <td><%= link_to coursework.title, coursework_path %></td>
                 <td><%= coursework.date_due %></td>
                 <td><%= coursework.date_assigned %></td>
-                <td><%= coursework.description %></td>
                 <td><%= coursework.weight %></td>
                 <td><%= coursework.total_mark %></td>
                 <% if current_user.admin? %>

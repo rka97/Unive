@@ -6,6 +6,12 @@ class CourseworksController < ApplicationController
         @course = Course.find(params[:course])
     end
 
+    def show
+        @coursework = Coursework.find(params[:id])
+        @q = @coursework.student_courseworks.ransack(params[:q])
+        @student_courseworks = @q.result(distinct: true).paginate(page: params[:student_cws_page], per_page: 5)
+    end
+
     def create
         @coursework = Coursework.new(coursework_params)
         if @coursework.save
