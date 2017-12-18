@@ -9,7 +9,7 @@
         <th><%=sort_link(@cws, :date_due, 'Due')%></th>
         <th><%=sort_link(@cws, :date_assigned, 'Assigned')%></th>
         <th><%=sort_link(@cws, :weight, 'Weight')%></th>
-        <th>Total Mark</th>
+        <th><%=sort_link(@cws, :total_mark, 'Total Mark')%></th>
         <% if current_user.admin? %>
             <th>Edit</th>
             <th>Remove</th>

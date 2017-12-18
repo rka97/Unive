@@ -33,7 +33,7 @@ Changelog:
 - [x] Admin can remove students from course.
 - [x] Add coursework (بسلطاطة ببابا غنوجه).
 - [x] Add student-coursework association.
-- [ ] Add course notes.
+- [x] Add course notes.
 - [ ] Add lectures.
 - [ ] Admin can manage number of lectures in a course.
 - [ ] Admin can assign teacher to a lecture.
@@ -47,4 +47,8 @@ Changelog:
 - [ ] Admin can ban students.
 - [ ] Integrate chatroom.
 - [ ] Clean up schema.
+
+# if there's time
 - [ ] Add course prerequisites.
+- [ ] Add comments on course notes and lectures.
+- [ ] Add file uploading on course notes.
