@@ -31,7 +31,10 @@ Changelog:
 - [x] Admin can remove teachers from courses.
 - [x] Admin can enroll students in course.
 - [x] Admin can remove students from course.
-- [ ] Add coursework, course notes to course model.
+- [x] Add coursework (بسلطاطة ببابا غنوجه).
+- [ ] Add student-coursework association.
+- [ ] Add course notes.
+- [ ] Add lectures.
 - [ ] Admin can manage number of lectures in a course.
 - [ ] Admin can assign teacher to a lecture.
 - [ ] Admin can ask teacher to confirm lecture time/place.
