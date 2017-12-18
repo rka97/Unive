@@ -5,4 +5,5 @@ class Course < ApplicationRecord
     has_many :teacher_courses, :class_name => "TeacherCourse", foreign_key: "course_id", dependent: :delete_all
     has_many :teachers, through: :teacher_courses
     has_many :courseworks, dependent: :delete_all
+    has_many :coursenotes, dependent: :delete_all
 end
