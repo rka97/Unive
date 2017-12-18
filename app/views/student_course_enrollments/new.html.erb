@@ -1,0 +1,19 @@
+<% provide(:title, "Add Student to " + @course.code) %>
+<h1>Add Student to <%= link_to @course.code, @course %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@scenrollment) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :student %>
+        <%= f.select :student_id, @students, include_blank: false, class: 'form-control' %>
+        <%= f.label :status %>
+        <%= f.select :status, [['Passed', 'Passed'], ['Failed', 'Failed'], ['Current', 'Current']], include_blank: false, class: 'form-control' %>
+        <%= f.label :course %>
+        <%= f.select :course_id, [[@course.code, @course.id]], {}, class: 'disabled-input' %>
+        <%= f.submit "Add Student", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%#= e.select :department_id, Department.all.collect { |d| [ d.name, d.id ] }, include_blank: true %> 

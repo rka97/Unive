@@ -1,0 +1,29 @@
+<tr>
+  <th scope="row"><%= teacher.id %></th>
+  <td><%= link_to teacher.name, teacher %></td>
+  <td><%= teacher.title %></td>
+  <td><%= teacher.hiring_date %></td>
+  <td><%= teacher.department.name %></td>
+  <td>
+    <div class = "form-group">
+      <select class = "form-control">
+          <% teacher.degrees.each do |degree| %>
+            <option class><%= degree_abbreviation(degree.title)%> | <%= degree.university %></option>
+          <% end %>
+      </select>
+    </div>
+  </td>
+  <td>
+    <div class = "form-group">
+      <select class = "form-control">
+          <% teacher.interests.each do |interest| %>
+            <option class><%= interest.field %></option>
+          <% end %>
+      </select>
+    </div>
+  </td>
+  <td><%= teacher.created_at.to_date %></td>
+  <td><%= teacher.updated_at.to_date %></td>
+  <td><%= link_to "Edit", edit_teacher_path(teacher) %></td>
+  <td><%= link_to "Delete", teacher_path(id: teacher.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>

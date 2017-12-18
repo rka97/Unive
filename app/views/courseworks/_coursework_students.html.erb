@@ -1,0 +1,32 @@
+<h3>Student Coursework</h3>
+<p><%= link_to "Add New Student Coursework Submission", new_student_coursework_path(:coursework => @coursework), class: "btn btn-primary" %></p>
+
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(@q, :student_id, 'Id')%></th>
+        <th><%=sort_link(@q, :student_name, 'Name')%></th>
+        <th><%=sort_link(@q, :mark, 'Mark') %></th>
+        <th><%=sort_link(@q, :date_handed, 'Date Handed')%></th>
+        <% if current_user.admin? %>
+            <th>Edit</th>
+            <th>Remove</th>
+        <% end %>
+    </tr>
+    </thead>
+    <tbody>
+        <% student_courseworks.each do |student_cw| %>
+            <tr>
+                <th scope="row"><%= student_cw.id %></th>
+                <td><%= link_to student_cw.student.name, student_cw.student %></td>
+                <td><%= student_cw.mark %></td>
+                <td><%= student_cw.date_handed %></td>
+                <% if current_user.admin? %>
+                    <td><%= link_to "Edit", edit_student_coursework_path(id: student_cw.id) %></td>
+                    <td><%= link_to "Delete", student_coursework_path(id: student_cw.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate student_courseworks, :param_name => "student_cws_page" %>

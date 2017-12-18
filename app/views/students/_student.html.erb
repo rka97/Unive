@@ -1,0 +1,21 @@
+<tr>
+  <th scope="row"><%= student.id %></th>
+  <td><%= link_to student.name, student %></td>
+  <td><%= student.gender %></td>
+  <td><%= student.phone_number %></td>
+  <td><%= student.address %></td>
+  <td><%= student.birth_date %></td>
+  <td><%= student.created_at.to_date %></td>
+  <td><%= student.updated_at.to_date %></td>
+  <td>
+    <div class = "form-group">
+      <select class = "form-control">
+          <% student.enrollments.each do |enrollment| %>
+            <option class><%= enrollment.department.abbreviation %> | <%= degree_abbreviation(enrollment.degree) %></option>
+          <% end %>
+      </select>
+    </div>
+  </td>
+  <td><%= link_to "Edit", edit_student_path(student) %></td>
+  <td><%= link_to "Delete", student_path(id: student.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>

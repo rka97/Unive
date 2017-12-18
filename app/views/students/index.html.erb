@@ -1,0 +1,31 @@
+<% provide(:title, 'Students') %>
+<h1>Students</h1>
+<ul class="students">
+  <%= render 'search' %>
+  <br />
+  <br />
+  <table class = "table">
+    <thead>
+      <tr>
+        <th><%=sort_link(@q, :id, "id")%></th>
+        <th><%=sort_link(@q, :name)%></th>
+        <th><%=sort_link(@q, :gender)%></th>
+        <th><%=sort_link(@q, :phone_number, "Phone #")%></th>
+        <th><%=sort_link(@q, :address, "Address")%></th>
+        <th><%=sort_link(@q, :birth_date, "Birth Date")%></th>
+        <th><%=sort_link(@q, :created_at)%></th>
+        <th><%=sort_link(@q, :updated_at)%></th>
+        <th>Departments</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr><%= link_to "Add a New Student", students_new_path, class: "btn btn-primary btn-md text-center" %></tr>
+        <% @students.each do |student| %>
+          <%= render student %>
+        <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+</ul>

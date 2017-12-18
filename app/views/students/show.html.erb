@@ -1,0 +1,18 @@
+<% provide(:title, @student.name) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">             
+            <h1 class="jumbotron text-center">
+                <%= @student.name %>
+            </h1>
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+            <%= render 'student_info', student: @student %>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class = "col-md-8 text-center" style="margin-top: 20px;">
+        Here we shall print his courses past and current, as well as all his grades. And we'll be able to search them as well.
+    </div>
+</div>

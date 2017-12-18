@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_number: 1
+  bench_number: 1
+  name: MyString
+  gender: false
+  degree: MyString
+  year: 1
+  phone_number: 1
+  address: MyString
+  birth_date: 2017-12-14

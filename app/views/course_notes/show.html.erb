@@ -1,0 +1,46 @@
+<% provide(:title, @coursenote.title + ' - ' + @coursenote.course.code ) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="users_info">             
+            <h1 class="jumbotron text-center">
+                <%= @coursenote.title %> 
+            </h1>
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+                <tr>
+                    <td>Id</td>
+                    <td><%= @coursenote.id %></td>
+                </tr>
+                <tr>
+                    <td>Title</td>
+                    <td><%= @coursenote.title %></td>
+                </tr>
+                <tr>
+                    <td>Created</td>
+                    <td><%= @coursenote.created_at %></td>
+                </tr>
+                <tr>
+                    <td>Last Updated</td>
+                    <td><%= @coursenote.updated_at %></td>
+                </tr>
+                <% if current_user.admin? %>
+                <tr>
+                    <td>Edit</td>
+                    <td><%= link_to "Edit", edit_course_note_path(id: @coursenote.id) %></td>
+                </tr>
+                <tr>
+                    <td>Delete</td>
+                    <td><%= link_to "Delete", course_note_path(id: @coursenote.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class = "col-md-7 text-center" style="margin-top: 20px;">
+        <div class="row">
+                <%= @coursenote.content %>
+            <%# Show File here.. %>
+        </div>
+    </div>
+</div>

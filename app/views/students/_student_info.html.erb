@@ -1,0 +1,44 @@
+<tr>
+    <td>Id</td>
+    <td><%= student.id %></td>
+</tr>
+<tr>
+    <td>Gender</td>
+    <td><%= student.gender %></td>
+</tr>
+<tr>
+    <td>Phone Number</td>
+    <td><%= student.phone_number %></td>
+</tr>
+<tr>
+    <td>Address</td>
+    <td><%= student.address %></td>
+</tr>
+<tr>
+    <td>Birth Date</td>
+    <td><%= student.birth_date %></td>
+</tr>
+<tr>
+    <td>Record Creation Date</td>
+    <td><%= student.created_at.to_date %></td>
+</tr>
+<tr>
+    <td>Record Update Date</td>
+    <td><%= student.updated_at.to_date %></td>
+</tr>
+<% if current_user.admin? && student.user != current_user %>
+<tr>
+    <td>Edit</td>
+    <td><%= link_to "Edit", edit_student_path(student) %></td>
+</tr>
+<tr>
+    <td>Delete</td>
+    <td><%= link_to "Delete", student_path(id: student.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>
+<% end %>
+<% if !student.user.nil? %>
+    <tr>
+        <td>User Profile</td>
+        <td><%= link_to student.user.name, student.user %></td>
+    </tr>
+<% end %>

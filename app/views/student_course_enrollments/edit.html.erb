@@ -1,0 +1,12 @@
+<% provide(:title, "Edit " + @student.name + " - " + @scenrollment.course.code) %>
+<div class="row">
+    <h4 class="center">Edit <%= link_to @scenrollment.course.code, @scenrollment.course %> Enrollment data for <%= link_to @student.name, @student %></h4>
+    <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@scenrollment) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :status %>
+        <%= f.select :status, [['Passed', 'Passed'], ['Failed', 'Failed'], ['Current', 'Current']], include_blank: false, class: 'form-control' %>
+        <%= f.submit "Change Student Status", class: "btn btn-primary" %>
+    <% end %>
+    </div>
+</div>

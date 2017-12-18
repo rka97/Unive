@@ -1,0 +1,4 @@
+<tr>
+    <td><%= f.text_field :degree %></td>
+    <td><%= f.select :department_id, Department.all.collect { |d| [ d.name, d.id ] }, include_blank: false %></td>
+</tr>

@@ -1,0 +1,51 @@
+<% provide(:title, "Edit " + @teacher.name) %>
+<h1>Edit Teacher</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@teacher) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.label :title  %>
+        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.label :department %>
+        <%= f.select :department_id, Department.all.collect { |d| [ d.name, d.id ] }, include_blank: false %>
+        <%= f.label :hiring_date %>
+        <%= f.date_field :hiring_date, class: 'form-control' %>
+        <%= f.label :degrees %>
+        <table class = 'table'>
+            <thead>
+                <tr>
+                    <th>Degree</th>
+                    <th>Field</th>
+                    <th>University Name</th>
+                    <th>Date Awarded</th>
+                    <th>Delete?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= f.fields_for :degrees do |degree| %>
+                    <%= render 'degree_fields', f: degree %>
+                <% end %>
+            </tbody>
+        </table>
+        <%= f.label :interests %>
+        <table class = 'table'>
+            <thead>
+                <% 3.times do |n| %>
+                    <th>Field of Interest <%= n+1 %></th>
+                    <th>Delete?</th>
+                <% end %>
+            </thead>
+            <tbody>
+                <%= f.fields_for :interests do |interest| %>
+                    <td><%= interest.text_field :field %></td>
+                    <td><%= interest.check_box :_destroy %></td>
+                <% end %>
+            </tbody>
+        </table>
+
+        <%= f.submit "Save Changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

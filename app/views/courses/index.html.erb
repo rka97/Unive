@@ -1,0 +1,30 @@
+<% provide(:title, 'Courses') %>
+<h1>Courses</h1>
+<ul class="users">
+  <%= render 'search' %>
+  <br />
+  <br />
+  <table class = "table">
+    <thead>
+      <tr>
+        <th><%=sort_link(@q, :id, "id")%></th>
+        <th><%=sort_link(@q, :code)%></th>
+        <th><%=sort_link(@q, :title)%></th>
+        <th><%=sort_link(@q, :credit_hours)%></th>
+        <th><%=sort_link(@q, :total_mark)%></th>
+        <th><%=sort_link(@q, :department_name, "Department")%></th>
+        <th><%=sort_link(@q, :created_at)%></th>
+        <th><%=sort_link(@q, :updated_at)%></th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+    <tbody>
+        <tr><%= link_to "Add a New Course", courses_new_path, class: "btn btn-primary btn-md text-center" %></tr>
+        <% @courses.each do |course| %>
+          <%= render course %>
+        <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+</ul>

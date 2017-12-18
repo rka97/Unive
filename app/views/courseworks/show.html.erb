@@ -1,0 +1,21 @@
+<% provide(:title, @coursework.title + ' - ' + @coursework.course.code ) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="users_info">             
+            <h1 class="jumbotron text-center">
+                <%= @coursework.title %> 
+            </h1>
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+            <%= render 'coursework_info', coursework: @coursework %>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class = "col-md-7 text-center" style="margin-top: 20px;">
+        <div class="row">
+            <%= render 'coursework_students', student_courseworks: @student_courseworks %>
+            Show all the student courseworks here, and one should be able to add/edit/remove student_courseworks.
+        </div>
+    </div>
+</div>

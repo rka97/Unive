@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy] # apply the filter before_action only to the actions :edit and :update
+  # apply the filter before_action only to the actions :edit and :update
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy] 
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   
   def index
-    @users = User.paginate(page: params[:page])    
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).paginate(page: params[:page])
   end
 
   def show
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :profile_owner_type, :profile_owner_id, :password, :password_confirmation)
     end
 
     # Confirms a logged-in user.
@@ -68,7 +70,7 @@ class UsersController < ApplicationController
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user?(@user) or current_user.admin?
     end
     
     # Confirms an admin user.

@@ -1,0 +1,40 @@
+<tr>
+    <td>Id</td>
+    <td><%= user.id %></td>
+</tr>
+<tr>
+    <td>Name</td>
+    <td><%= user.name %></td>
+</tr>
+<tr>
+    <td>Email</td>
+    <td><%= user.email %></td>
+</tr>
+<tr>
+    <td>Admin</td>
+    <td><%= user.admin? ? 'Yes' : 'No' %></td>
+</tr>
+<tr>
+    <td>Record Creation Date</td>
+    <td><%= user.created_at.to_date %></td>
+</tr>
+<tr>
+    <td>Record Update Date</td>
+    <td><%= user.updated_at.to_date %></td>
+</tr>
+<% if current_user.admin? && current_user != user %>
+<tr>
+    <td>Edit</td>
+    <td><%= link_to "Edit", edit_user_path(user) %></td>
+</tr>
+<tr>
+    <td>Delete</td>
+    <td><%= link_to "Delete", user_path(id: user.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>
+<% end %>
+<% if !user.profile_owner.nil? %>
+    <tr>
+        <td>Profile Owner</td>
+        <td><%= link_to user.profile_owner.name, user.profile_owner %></td>
+    </tr>
+<% end %>

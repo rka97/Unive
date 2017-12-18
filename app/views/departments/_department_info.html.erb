@@ -1,0 +1,34 @@
+<tr>
+    <td>Id</td>
+    <td><%= department.id %></td>
+</tr>
+<tr>
+    <td>Abbreviation</td>
+    <td><%= department.abbreviation %></td>
+</tr>
+<tr>
+    <td>Number of Enrolled Students</td>
+    <td><%= department.students.size %></td>
+</tr>
+<tr>
+    <td>Number of Courses </td>
+    <td><%= department.courses.size %></td>
+</tr>
+<tr>
+    <td>Record Creation Date</td>
+    <td><%= department.created_at.to_date %></td>
+</tr>
+<tr>
+    <td>Record Update Date</td>
+    <td><%= department.updated_at.to_date %></td>
+</tr>
+<% if current_user.admin? %>
+<tr>
+    <td>Edit</td>
+    <td><%= link_to "Edit", edit_department_path(department) %></td>
+</tr>
+<tr>
+    <td>Delete</td>
+    <td><%= link_to "Delete", department_path(id: department.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+</tr>
+<% end %>

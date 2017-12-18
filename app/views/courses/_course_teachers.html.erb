@@ -1,0 +1,30 @@
+<h3>Teachers</h3>
+<p><%= link_to "Add New Teacher to Course", new_teacher_course_path(:course => @course), class: "btn btn-primary" %></p>
+
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(@ts, :teacher_id, 'Id')%></th>
+        <th><%=sort_link(@ts, :teacher_name, 'Name')%></th>
+        <th>Date Started</th>
+        <% if current_user.admin? %>
+            <th>Edit</th>
+            <th>Remove</th>
+        <% end %>
+    </tr>
+    </thead>
+    <tbody>
+        <% @teachers.each do |teacher| %>
+            <tr>
+                <th scope="row"><%= teacher.id %></th>
+                <td><%= link_to teacher.name, teacher %></td>
+                <td><%= teacher.teacher_courses.find_by(course_id: @course.id).date_taught %></td>
+                <% if current_user.admin? %>
+                    <td><%= link_to "Edit", edit_teacher_course_path(id: (teacher.teacher_courses.find_by(course_id: @course.id)).id) %></td>
+                    <td><%= link_to "Delete", teacher_course_path(id: (teacher.teacher_courses.find_by(course_id: @course.id)).id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @teachers, :param_name => "teachers_page" %>

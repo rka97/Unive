@@ -4,11 +4,15 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <%= form_for(@user, url: signup_path) do |f| %>
-            <%= render 'shared/error_messages' %>
+            <%= render 'shared/error_messages', object: @user %>
             <%= f.label :name %>
             <%= f.text_field :name, class: 'form-control' %>
             <%= f.label :email %>
             <%= f.email_field :email, class: 'form-control' %>
+            <%= f.label :profile_owner_type %>
+            <%= f.select :profile_owner_type, [['Student', 'Student'], ['Professor / Teaching Assistant', 'Teacher'], ['Employee', 'Employee']] %>
+            <%= f.label :profile_owner_id %>
+            <%= f.text_field :profile_owner_id, class: 'form-control' %>
             <%= f.label :password %>
             <%= f.password_field :password, class: 'form-control' %>
             <%= f.label :password_confirmation, "Confirmation" %>

@@ -1,0 +1,17 @@
+<% provide(:title, "Add Note - " + @course.code) %>
+<h1>Add Note - <%= link_to @course.code, @course %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@coursenote) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.label :content %>
+        <%= f.text_field :content, class: 'form-control' %>
+        <%= f.label :course %>
+        <%= f.select :course_id, [[@course.code, @course.id]], {}, class: 'disabled-input' %>
+        <%= f.submit "Add Note", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

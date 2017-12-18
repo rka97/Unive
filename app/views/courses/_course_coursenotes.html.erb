@@ -1,0 +1,30 @@
+<h3>Course Notes</h3>
+<p><%= link_to "Add New Course Note", new_course_note_path(:course => @course), class: "btn btn-primary" %></p>
+
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(@cns, :cn_id, 'Id')%></th>
+        <th><%=sort_link(@cns, :cn_title, 'Title')%></th>
+        <th><%=sort_link(@cns, :cn_created_at, 'Uploaded')%></th>
+        <% if current_user.admin? %>
+            <th>Edit</th>
+            <th>Remove</th>
+        <% end %>
+    </tr>
+    </thead>
+    <tbody>
+        <% @coursenotes.each do |coursenote| %>
+            <tr>
+                <th scope="row"><%= coursenote.id %></th>
+                <td><%= link_to coursenote.title, course_note_path %></td>
+                <td><%= coursenote.created_at %></td>
+                <% if current_user.admin? %>
+                    <td><%= link_to "Edit", edit_course_note_path(id: coursenote.id) %></td>
+                    <td><%= link_to "Delete", course_note_path(id: coursenote.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @coursenotes, :param_name => "coursenotes_page" %>
