@@ -34,9 +34,9 @@ Changelog:
 - [x] Add coursework (بسلطاطة ببابا غنوجه).
 - [x] Add student-coursework association.
 - [x] Add course notes.
-- [ ] Add lectures.
-- [ ] Admin can manage number of lectures in a course.
-- [ ] Admin can assign teacher to a lecture.
+- [x] Add lectures.
+- [x] Admin can manage number of lectures in a course.
+- [x] Admin can assign teacher to a lecture.
 - [ ] Admin can ask teacher to confirm lecture time/place.
 - [ ] Admin can see students marks, can track which students are close to failing (or failed).
 - [ ] Add teams model.
