@@ -3,6 +3,7 @@ class TeachersController < ApplicationController
   
   def show
     @teacher = Teacher.find(params[:id])
+    @courses = @teacher.courses
   end
 
   def new

@@ -10,8 +10,9 @@
         <th><%=sort_link(@cws, :date_assigned, 'Assigned')%></th>
         <th><%=sort_link(@cws, :weight, 'Weight')%></th>
         <th><%=sort_link(@cws, :total_mark, 'Total Mark')%></th>
-        <% if current_user.admin? %>
-            <th>Edit</th>
+        <% if current_user.admin? || current_user.profile_owner_type == "Teacher" %>
+	<%# not any teacher for any course! %>        
+	    <th>Edit</th>
             <th>Remove</th>
         <% end %>
     </tr>

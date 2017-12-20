@@ -17,7 +17,7 @@
         <% @coursenotes.each do |coursenote| %>
             <tr>
                 <th scope="row"><%= coursenote.id %></th>
-                <td><%= link_to coursenote.title, coursenote %></td>
+                <td><%= link_to coursenote.title, CourseNote.find(coursenote.id) %></td>
                 <td><%= coursenote.created_at %></td>
                 <% if current_user.admin? %>
                     <td><%= link_to "Edit", edit_course_note_path(id: coursenote.id) %></td>

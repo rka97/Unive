@@ -6,6 +6,12 @@ class CourseworksController < ApplicationController
         @course = Course.find(params[:course])
     end
 
+    def index
+        @coureswork= Courseworks.ransack(params[:id]
+        
+
+    end
+
     def show
         @coursework = Coursework.find(params[:id])
         @q = @coursework.student_courseworks.ransack(params[:q])

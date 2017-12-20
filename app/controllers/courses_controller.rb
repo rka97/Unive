@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
     before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
+    before_action:redirect_if_teacher,only: [:index]    
     
     def show
         @course = Course.find(params[:id])
