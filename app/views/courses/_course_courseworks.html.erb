@@ -10,9 +10,9 @@
         <th><%=sort_link(@cws, :date_assigned, 'Assigned')%></th>
         <th><%=sort_link(@cws, :weight, 'Weight')%></th>
         <th><%=sort_link(@cws, :total_mark, 'Total Mark')%></th>
-        <% if current_user.admin? %>
-            <th>Edit</th>
-            <th>Remove</th>
+        <% if current_user.admin? or (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(@course.id)) %>
+        <th>Edit</th>
+        <th>Remove</th>
         <% end %>
     </tr>
     </thead>
@@ -20,14 +20,14 @@
         <% @courseworks.each do |coursework| %>
             <tr>
                 <th scope="row"><%= coursework.id %></th>
-                <td><%= link_to coursework.title, coursework_path %></td>
+                <td><%= link_to coursework.title, coursework_path(id: coursework.id) %></td>
                 <td><%= coursework.date_due %></td>
                 <td><%= coursework.date_assigned %></td>
                 <td><%= coursework.weight %></td>
                 <td><%= coursework.total_mark %></td>
-                <% if current_user.admin? %>
-                    <td><%= link_to "Edit", edit_coursework_path(id: (coursework.id)) %></td>
-                    <td><%= link_to "Delete", coursework_path(id: (coursework.id)), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                <% if current_user.admin? or (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(@course.id)) %>
+                <td><%= link_to "Edit", edit_coursework_path(id: (coursework.id)) %></td>
+                <td><%= link_to "Delete", coursework_path(id: (coursework.id)), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
                 <% end %>
             </tr>
         <% end %>

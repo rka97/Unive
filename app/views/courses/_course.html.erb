@@ -7,6 +7,8 @@
   <td><%= link_to course.department.name, course.department %></td>
   <td><%= course.created_at.to_date %></td>
   <td><%= course.updated_at.to_date %></td>
+  <% if current_user.admin? %>
   <td><%= link_to "Edit", edit_course_path(course) %></td>
   <td><%= link_to "Delete", course_path(id: course.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+  <% end %>
 </tr>

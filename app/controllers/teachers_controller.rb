@@ -1,8 +1,9 @@
 class TeachersController < ApplicationController
-  before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
-  
+  before_action :redirect_if_not_admin, only: [:index, :destroy] 
+
   def show
     @teacher = Teacher.find(params[:id])
+    @courses = @teacher.courses
   end
 
   def new
@@ -28,6 +29,7 @@ class TeachersController < ApplicationController
 
   def edit
       @teacher = Teacher.find(params[:id])
+      redirect_if_not_correct_teacher(@teacher)
       if (@teacher.degrees.size < 3)
         (3 - @teacher.degrees.size).times do |i|
             @teacher.degrees << TeacherDegree.new

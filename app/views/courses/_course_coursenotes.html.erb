@@ -7,7 +7,7 @@
         <th><%=sort_link(@cns, :cn_id, 'Id')%></th>
         <th><%=sort_link(@cns, :cn_title, 'Title')%></th>
         <th><%=sort_link(@cns, :cn_created_at, 'Uploaded')%></th>
-        <% if current_user.admin? %>
+        <% if current_user.admin? or (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(@course.id)) %>
             <th>Edit</th>
             <th>Remove</th>
         <% end %>
@@ -17,9 +17,9 @@
         <% @coursenotes.each do |coursenote| %>
             <tr>
                 <th scope="row"><%= coursenote.id %></th>
-                <td><%= link_to coursenote.title, coursenote %></td>
+                <td><%= link_to coursenote.title, CourseNote.find(coursenote.id) %></td>
                 <td><%= coursenote.created_at %></td>
-                <% if current_user.admin? %>
+                <% if current_user.admin? or (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(@course.id)) %>
                     <td><%= link_to "Edit", edit_course_note_path(id: coursenote.id) %></td>
                     <td><%= link_to "Delete", course_note_path(id: coursenote.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
                 <% end %>

@@ -15,6 +15,7 @@
     <div class = "col-md-8 text-center" style="margin-top: 20px;">
         <%= render 'degrees', teacher: @teacher %>
         <%= render 'interests', teacher: @teacher %>
-        Show the courses he teaches here.
+        <%= render 'teacher_courses',teacher:@courses %>
+        
     </div>
 </div>
