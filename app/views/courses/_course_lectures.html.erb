@@ -1,5 +1,7 @@
 <h3>Lectures</h3>
+<%if is_admin? %>
 <p><%= link_to "Add New Lecture", new_lecture_path(:course => @course), class: "btn btn-primary" %></p>
+<%end%>
 
 <table class = "table table-bordered table-responsive">
     <thead>

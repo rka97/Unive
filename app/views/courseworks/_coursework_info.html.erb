@@ -15,10 +15,6 @@
     <td><%= coursework.date_assigned %></td>
 </tr>
 <tr>
-    <td>Description</td>
-    <td><%= coursework.description %></td>
-</tr>
-<tr>
     <td>Weight</td>
     <td><%= coursework.weight %></td>
 </tr>
@@ -30,6 +26,7 @@
     <td>Course</td>
     <td><%= link_to coursework.course.code, coursework.course %></td>
 </tr>
+<% if current_user.admin? %>
 <tr>
     <td>Record Creation Date</td>
     <td><%= coursework.created_at.to_date %></td>
@@ -38,7 +35,7 @@
     <td>Record Update Date</td>
     <td><%= coursework.updated_at.to_date %></td>
 </tr>
-<% if current_user.admin? %>
+
 <tr>
     <td>Edit</td>
     <td><%= link_to "Edit", edit_coursework_path(id: (coursework.id)) %></td>

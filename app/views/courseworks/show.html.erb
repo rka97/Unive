@@ -14,8 +14,18 @@
     </aside>
     <div class = "col-md-7 text-center" style="margin-top: 20px;">
         <div class="row">
+
+          <%if is_admin?%>
             <%= render 'coursework_students', student_courseworks: @student_courseworks %>
-            Show all the student courseworks here, and one should be able to add/edit/remove student_courseworks.
+            <!--Show all the student courseworks here, and one should be able to add/edit/remove student_courseworks.-->
+          <%end%>
+          <%if is_student?%>
+
+            <h3>Student Coursework</h3>
+
+            <%= @coursework.description %>
+
+          <%end%>
         </div>
     </div>
 </div>

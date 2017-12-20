@@ -1,5 +1,5 @@
 class StudentCourseworksController < ApplicationController
-    before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
+   # before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy]
 
     def new
         @student_coursework = StudentCoursework.new
@@ -16,6 +16,10 @@ class StudentCourseworksController < ApplicationController
         else
             redirect_back fallback_location: courses_url
         end
+    end
+
+    def show
+
     end
     
     def edit

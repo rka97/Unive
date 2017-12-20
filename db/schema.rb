@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220132226) do
+ActiveRecord::Schema.define(version: 20171220194548) do
 
   create_table "course_notes", force: :cascade do |t|
     t.string "title", null: false
@@ -102,6 +102,10 @@ ActiveRecord::Schema.define(version: 20171220132226) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date_handed"
+    t.string "solution_file_name"
+    t.string "solution_content_type"
+    t.integer "solution_file_size"
+    t.datetime "solution_updated_at"
     t.index ["coursework_id", "student_id"], name: "index_student_courseworks_on_coursework_id_and_student_id", unique: true
     t.index ["coursework_id"], name: "index_student_courseworks_on_coursework_id"
     t.index ["student_id"], name: "index_student_courseworks_on_student_id"

@@ -1,0 +1,26 @@
+<h1>My courses</h1>
+<div class="row">
+  <% @courses.each do |course| %>
+    <div class="item col-lg-3">
+      <div class="well">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%=link_to course.code + "  -  " + course.title, course %></li>
+          <li class="list-group-item"><%=course.department.name%> Department</li>
+          <li class="list-group-item">
+            Staff:
+            <ul>
+              <%course.teachers.first(5).each do |teacher|%>
+                <li><%=teacher.name%> </li>
+              <%end%>
+              <%if course.teachers.count > 5%>
+                <li>And more</li>
+              <%end%>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <%end%>
+</div>
+</div>
+

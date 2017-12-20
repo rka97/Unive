@@ -1,18 +1,18 @@
 class CoursesController < ApplicationController
-    before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
-    
+    before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy]
+
     def show
         @course = Course.find(params[:id])
         @q = @course.students.ransack(params[:q])
         @students = @q.result(distinct: true).paginate(page: params[:students_page], per_page: 5)
         @ts = (@course.teachers).ransack(params[:q])
         @teachers = @ts.result(distinct: true).paginate(page: params[:teachers_page], per_page: 5)
-        @cws = (@course.courseworks).ransack(params[:q])
-        @courseworks = @cws.result(distinct: true).paginate(page: params[:courseworks_page], per_page: 5)
         @cns = (@course.course_notes).ransack(params[:q])
         @coursenotes = @cns.result(distinct: true).paginate(page: params[:coursenotes_page], per_page: 5)
         @lcs = (@course.lectures).ransack(params[:q])
         @lectures = @lcs.result(distinct: true).paginate(page: params[:lectures_page], per_page: 5)
+        @cws = (@course.courseworks).ransack(params[:q])
+        @courseworks = @cws.result(distinct: true).paginate(page: params[:courseworks_page], per_page: 5)
     end
     
     def new
