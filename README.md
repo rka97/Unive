@@ -4,8 +4,8 @@
 To-do:
 Make an administrator able to do the following:
 - [x] Manage the number and academic standing of students in various departments.
-- [ ] Add or remove subjects, assign professors as well as teaching assistants to certain subjects in certain times, notify them and ask for their confirmation.
-- [ ] Manage and alter the timetables, notify professors and students of it, ask for confirmation from professors as well as class representatives.
+- [x] Add or remove subjects, assign professors as well as teaching assistants to certain subjects in certain times.
+- [x] Manage and alter the timetables.
 - [ ] Track which students are failing and require extra intervention or notification, as well which students have overdue fees or not enough class attendance.
 - [ ] Ban or discipline students for certain periods of time. Delete messages from the chat room.
 

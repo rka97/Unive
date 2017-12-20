@@ -19,6 +19,7 @@ gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.7.0'
 gem 'bootstrap_form'
 gem 'ransack'
+gem 'has_friendship'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

@@ -11,8 +11,8 @@
         <th><%=sort_link(@cws, :weight, 'Weight')%></th>
         <th><%=sort_link(@cws, :total_mark, 'Total Mark')%></th>
         <% if current_user.admin? or (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(@course.id)) %>
-        <th>Edit</th>
-        <th>Remove</th>
+            <th>Edit</th>
+            <th>Remove</th>
         <% end %>
     </tr>
     </thead>
