@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218054503) do
+ActiveRecord::Schema.define(version: 20171220132226) do
 
   create_table "course_notes", force: :cascade do |t|
     t.string "title", null: false
@@ -107,6 +107,16 @@ ActiveRecord::Schema.define(version: 20171218054503) do
     t.index ["student_id"], name: "index_student_courseworks_on_student_id"
   end
 
+  create_table "student_teams", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_student_teams_on_student_id"
+    t.index ["team_id"], name: "index_student_teams_on_team_id"
+    t.index [nil], name: "index_student_teams_on_team", unique: true
+  end
+
   create_table "students", force: :cascade do |t|
     t.integer "section_number", null: false
     t.integer "bench_number", null: false
@@ -157,6 +167,12 @@ ActiveRecord::Schema.define(version: 20171218054503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_teachers_on_department_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,6 +5,8 @@ class Student < ApplicationRecord
     has_many :course_enrollments, :class_name => "StudentCourseEnrollment", foreign_key: "student_id", dependent: :delete_all
     has_many :courses, through: :course_enrollments
     has_many :student_courseworks, dependent: :delete_all
+    has_many :student_teams, dependent: :delete_all
+    has_many :teams, through: :student_teams
     alias_attribute :works, :student_courseworks
     validates :enrollments, presence: true
     validates_format_of :gender, :with => /\Amale\Z|\Afemale\Z|\Ana\Z/i
