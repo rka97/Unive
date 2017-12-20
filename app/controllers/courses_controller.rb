@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
-    before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
-    before_action:redirect_if_teacher,only: [:index]    
+    before_action :redirect_if_not_admin, only: [:destroy] 
     
     def show
         @course = Course.find(params[:id])
@@ -30,8 +29,12 @@ class CoursesController < ApplicationController
         end
     end
     
-    def index
-        @q = Course.ransack(params[:q])
+    def index()
+        courses = Course.all
+        if !current_user.admin? 
+            courses = current_user.profile_owner.courses
+        end
+        @q = courses.ransack(params[:q])
         @courses = @q.result(distinct: true).paginate(page: params[:page])
     end
     

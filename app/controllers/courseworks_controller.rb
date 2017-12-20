@@ -1,5 +1,10 @@
 class CourseworksController < ApplicationController
-    before_action :redirect_if_not_admin, only: [:index, :edit, :update, :destroy] 
+    before_action only: [:index, :edit, :update, :destroy] do
+        cw = Coursework.find(params[:id])
+        if !(current_user.admin? || current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(cw.course.id))
+            redirect_back fallback_location: courses_url
+        end
+    end
 
     def new
         @coursework = Coursework.new
@@ -7,9 +12,7 @@ class CourseworksController < ApplicationController
     end
 
     def index
-        @coureswork= Courseworks.ransack(params[:id]
-        
-
+        #@coureswork= Courseworks.ransack(params[:id])
     end
 
     def show

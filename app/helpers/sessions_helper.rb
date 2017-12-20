@@ -6,10 +6,10 @@ module SessionsHelper
       redirect_to(root_url) unless current_user.admin?
     end
 
-    def redirect_if_teacher
-      redirect_to(root_url) unless current_user.profile_owner_type == "Teacher" || current_user.admin?
+    def redirect_if_not_correct_teacher(tec)
+      redirect_to(root_url) unless (current_user.profile_owner_type == "Teacher" and current_user.profile_owner == tec) || current_user.admin?
     end
-  
+
     # Returns the current logged-in user (if any).
     def current_user
         @current_user ||= User.find_by(id: session[:user_id])

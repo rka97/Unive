@@ -12,7 +12,7 @@
         <%= f.label :note, 'Note (if any)' %>
         <%= f.text_field :note, class: 'form-control' %>
         <%= f.label :teacher %>
-        <%= f.select :teacher_id, (@course.teachers).collect { |t| [ t.name, t.id ] }, include_blank: false %>
+        <%= f.select :teacher_id, (@teachers).collect { |t| [ t.name, t.id ] }, include_blank: false %>
         <%= f.submit "Save Changes", class: "btn btn-primary" %>
     <% end %>
   </div>

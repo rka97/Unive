@@ -15,8 +15,10 @@
         <th><%=sort_link(@q, :department_name, "Department")%></th>
         <th><%=sort_link(@q, :created_at)%></th>
         <th><%=sort_link(@q, :updated_at)%></th>
+        <% if current_user.admin? %>
         <th>Edit</th>
         <th>Delete</th>
+        <% end %>
       </tr>
       </thead>
     <tbody>

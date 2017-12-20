@@ -8,7 +8,7 @@
         <th><%=sort_link(@lcs, :place, 'Place')%></th>
         <th><%=sort_link(@lcs, :lec_time, 'Time')%></th>
         <th><%=sort_link(@lcs, :teacher_name, 'Teacher')%></th>
-        <% if current_user.admin? %>
+        <% if current_user.admin? || (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(id: @course.id) != nil) %>
             <th>Edit</th>
             <th>Remove</th>
         <% end %>
@@ -21,7 +21,7 @@
                 <td><%= lecture.place %></td>
                 <td><%= lecture.lec_time %></td>
                 <td><%= link_to lecture.teacher.name, lecture.teacher %></td>
-                <% if current_user.admin? %>
+                <% if current_user.admin? || (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(id: @course.id) != nil && lecture.teacher == current_user.profile_owner) %>
                     <td><%= link_to "Edit", edit_lecture_path(id: lecture.id) %></td>
                     <td><%= link_to "Delete", lecture_path(id: lecture.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
                 <% end %>
