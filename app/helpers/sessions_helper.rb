@@ -9,6 +9,9 @@ module SessionsHelper
     def redirect_if_not_correct_teacher(tec)
       redirect_to(root_url) unless (current_user.profile_owner_type == "Teacher" and current_user.profile_owner == tec) || current_user.admin?
     end
+    def redirect_if_not_logged_in
+      redirect_to (root_url) unless logged_in?
+    end
 
     # Returns the current logged-in user (if any).
     def current_user

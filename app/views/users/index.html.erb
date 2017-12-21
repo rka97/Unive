@@ -9,13 +9,15 @@
         <th><%=sort_link(@q, :id, "id")%></th>
         <th><%=sort_link(@q, :name)%></th>
         <th><%=sort_link(@q, :email)%></th>
-        <th><%=sort_link(@q, :profile_owner_type, "Owner Type")%></th>
-        <th><%=sort_link(@q, :profile_owner_id, "Owner Id")%></th>
-        <th><%=sort_link(@q, :created_at)%></th>
-        <th><%=sort_link(@q, :updated_at)%></th>
-        <th><%=sort_link(@q, :admin)%></th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <% if current_user.admin? %>
+          <th><%=sort_link(@q, :profile_owner_type, "Owner Type")%></th>
+          <th><%=sort_link(@q, :profile_owner_id, "Owner Id")%></th>
+          <th><%=sort_link(@q, :created_at)%></th>
+          <th><%=sort_link(@q, :updated_at)%></th>
+          <th><%=sort_link(@q, :admin)%></th>
+          <th>Edit</th>
+          <th>Delete</th>
+        <% end %>
         <th>Avatar</th>
       </tr>
       </thead>

@@ -1,0 +1,33 @@
+<% provide(:title, 'Messages - ' + current_user.name ) %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="users_info">
+        <table class = "table table-bordered table-responsive">
+            <tbody>
+                <tr>
+                    <td>Time</td>
+                    <td><%= @message.created_at %></td>
+                </tr>
+                <tr>
+                    <td>Sender</td>
+                    <td><%= link_to @message.sender.name, @message.sender %></td>
+                </tr>
+                <tr>
+                    <td>Receiver</td>
+                    <td><%= link_to @message.receiver.name, @message.sender %></td>
+                </tr>
+                <tr>
+                    <td>Content</td>
+                    <td><%= @message.content %></td>
+                </tr>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class = "col-md-7 text-center" style="margin-top: 20px;">
+        <div class="row">
+                <%= @lecture.note %>
+            <%# Show attendance here.. %>
+        </div>
+    </div>
+</div>
