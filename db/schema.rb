@@ -123,9 +123,19 @@ ActiveRecord::Schema.define(version: 20171221032117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date_handed"
+    t.string "solution"
     t.index ["coursework_id", "student_id"], name: "index_student_courseworks_on_coursework_id_and_student_id", unique: true
     t.index ["coursework_id"], name: "index_student_courseworks_on_coursework_id"
     t.index ["student_id"], name: "index_student_courseworks_on_student_id"
+  end
+
+  create_table "student_teams", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_student_teams_on_student_id"
+    t.index ["team_id"], name: "index_student_teams_on_team_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -178,6 +188,12 @@ ActiveRecord::Schema.define(version: 20171221032117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_teachers_on_department_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

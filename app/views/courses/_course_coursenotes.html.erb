@@ -1,5 +1,7 @@
 <h3>Course Notes</h3>
+<% if is_admin? || is_teacher?%>
 <p><%= link_to "Add New Course Note", new_course_note_path(:course => @course), class: "btn btn-primary" %></p>
+<%end%>
 
 <table class = "table table-bordered table-responsive">
     <thead>

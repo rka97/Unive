@@ -1,0 +1,13 @@
+<h1>Courses</h1>
+<div class="row">
+  <% @teams.each do |team| %>
+    <div class="item col-lg-6">
+      <div class="well">
+        <p><%=link_to team.name, team %></p>
+      </div>
+    </div>
+  <%end%>
+</div>
+</div>
+
+

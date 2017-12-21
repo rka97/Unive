@@ -21,15 +21,32 @@ admin: true,
 student: false,
 profile_owner_type: "Employee",
 profile_owner_id: 1)
-Employee.create!(id: 2, name: "Alaa", position: "Admin-Second", hiring_date: Date.parse("2017-12-14"), department_id: 1)
-User.create!(name:  "Alaa",
-email: "admin2@admin.net",
-password:              "password",
-password_confirmation: "password",
-admin: false,
-student: false,
-profile_owner_type: "Employee",
-profile_owner_id: 2)
+
+Employee.create!(id: 2, name: "Adam", position: "Secretary", hiring_date: Date.parse("2017-12-14"), department_id: 1)
+
+
+begin
+class Coursework < ApplicationRecord
+  belongs_to :course, optional: false
+  has_many :student_courseworks, dependent: :delete_all, class_name: 'StudentCoursework', foreign_key: 'coursework_id'
+  has_many :students, through: :student_courseworks
+  alias_attribute :cw_id, :id
+  alias_attribute :cw_title, :title
+end
+
+create_table "courseworks", force: :cascade do |t|
+  t.date "date_due", null: false
+  t.date "date_assigned", null: false
+  t.string "description", null: false
+  t.float "weight", null: false
+  t.integer "total_mark", null: false
+  t.string "title", null: false
+  t.integer "course_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["course_id"], name: "index_courseworks_on_course_id"
+end
+=end
 
 
 # Make a few courses
@@ -41,7 +58,9 @@ profile_owner_id: 2)
     credit_hours = Faker::Number.between(1, 3)
     total_mark = Faker::Number.between(1, 3) * 100
     course_parameters = { code: code, title: title, credit_hours: credit_hours, total_mark: total_mark, department_id: department_id }
-    Course.create!(course_parameters)
+    course = Course.create!(course_parameters)
+    Coursework.create!(date_due: "20-10-2017", date_assigned: "10-10-2017", description: "WHY", weight: 0.5, total_mark: 20,
+                       title: "SHUT UP", course_id: course.id)
   end
 end
 

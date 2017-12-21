@@ -20,6 +20,7 @@ gem 'jbuilder',                '2.7.0'
 gem 'bootstrap_form'
 gem 'ransack'
 gem 'has_friendship'
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

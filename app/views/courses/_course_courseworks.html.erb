@@ -1,5 +1,7 @@
 <h3>Exams & Assignments</h3>
+<% if current_user.admin? or (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.courses.exists?(@course.id)) %>
 <p><%= link_to "Add New Coursework", new_coursework_path(:course => @course), class: "btn btn-primary" %></p>
+<% end %>
 
 <table class = "table table-bordered table-responsive">
     <thead>

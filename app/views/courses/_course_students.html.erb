@@ -1,5 +1,5 @@
 <h3>Students</h3>
-<% if current_user.admin? %>
+<% if is_admin? %>
 <p><%= link_to "Enroll New Student in Course", new_student_course_enrollment_path(:course => @course), class: "btn btn-primary" %></p>
 <% end %>
 <table class = "table table-bordered table-responsive">
