@@ -21,6 +21,15 @@ admin: true,
 student: false,
 profile_owner_type: "Employee",
 profile_owner_id: 1)
+Employee.create!(id: 2, name: "Alaa", position: "Admin-Second", hiring_date: Date.parse("2017-12-14"), department_id: 1)
+User.create!(name:  "Alaa",
+email: "admin2@admin.net",
+password:              "password",
+password_confirmation: "password",
+admin: false,
+student: false,
+profile_owner_type: "Employee",
+profile_owner_id: 2)
 
 
 # Make a few courses

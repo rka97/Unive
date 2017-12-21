@@ -43,7 +43,7 @@ Changelog:
 - [ ] Make announcements model.
 - [ ] Admin can announce things to students.
 - [ ] Admin can ban students.
-- [ ] Admin can browse friendships among users.
+- [x] Admin can browse friendships among users.
 - [ ] Admin should be able to make any user into an admin.
 - [ ] Admin can ask teacher to confirm lecture time/place.
 - [ ] Admin can see students marks, can track which students are close to failing (or failed).

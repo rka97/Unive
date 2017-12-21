@@ -59,6 +59,13 @@ class UsersController < ApplicationController
     user == current_user
   end
 
+  def make_admin
+    user = User.find(params[:user_id])
+    user.admin = true
+    user.save
+    redirect_back fallback_location: current_user
+  end
+
   def request_friendship()
     secondUser = User.find(params[:friend_id])
     current_user.friend_request(secondUser)

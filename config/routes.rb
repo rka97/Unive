@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'delete_friendship', on: :member
     post 'block_friendship', on: :member
     post 'unblock_friendship', on: :member
+    post 'make_admin', on: :member
   end 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
