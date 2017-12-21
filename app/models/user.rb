@@ -11,6 +11,8 @@ class User < ApplicationRecord
   ransack_alias :ownername, :profile_owner_name
   alias_attribute :u_id, :id
   alias_attribute :u_name, :name
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id', dependent: :delete_all
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :delete_all
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

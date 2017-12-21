@@ -8,6 +8,7 @@ class Teacher < ApplicationRecord
   has_many :teacher_courses, :class_name => "TeacherCourse", foreign_key: "teacher_id", dependent: :delete_all
   has_many :courses, through: :teacher_courses
   has_many :lectures, dependent: :delete_all
+  has_many :students, through: :courses
   validates :degrees, presence: true
   validates :interests, presence: true
   validates :name, presence: true, length: {maximum: 50}
