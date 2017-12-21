@@ -7,6 +7,22 @@
                     <%= gravatar_for @user, size: 250, class: "rounded img-fluid" %>
                 </div>
             </div>
+            <% if @user != current_user %>
+                <div class="text-center col-md-auto">
+                    <% if current_user.friends_with?(@user) %>
+                        <%= button_to 'Remove Friend', delete_friendship_user_path(friend_id: @user.id), class: 'btn btn-lg btn-danger' %>
+                    <% else %>
+                        <% if current_user.pending_friends.exists?(@user.id) %>
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>Friend Request Pending</button>
+                        <% elsif current_user.requested_friends.exists?(@user.id)%>
+                            <div class="col-sm-6"><%= button_to 'Accept', accept_friend_user_path(friend_id: @user.id), class: 'btn btn-primary' %></div>
+                            <div class="col-sm-6"><%= button_to 'Decline', decline_friend_user_path(friend_id: @user.id), class: 'btn btn-warning'  %></div>
+                        <% else %>
+                            <%= button_to 'Request Friendship', request_friendship_user_path(friend_id: @user.id), class: 'btn btn-lg btn-primary' %>
+                        <% end %>
+                    <% end %>
+                </div>
+            <% end %>
         </section>
         <table class = "table table-bordered table-responsive">
             <tbody>
@@ -15,5 +31,17 @@
         </table>
     </aside>
     <div class = "col-md-8" style="margin-top: 20px;">
+        <% if @user == current_user %>
+            <% if !@pending_friends.empty? %>
+                <%= render 'friend_requests' %>
+            <% end %>
+            <% if !@user.friends.empty? %>
+                <%= render 'friends', friends: @friends, q2: @q2%>
+            <% end %>
+            Print the user's messages. <br />
+
+        <% elsif !@mutual_friends.empty? %>
+            <%= render 'mutual_friends', friends: @mutual_friends %>
+        <% end %>
     </div>
 </div>

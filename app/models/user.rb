@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
   validates :profile_owner_id, uniqueness: {scope: :profile_owner_type}
   ransack_alias :ownername, :profile_owner_name
+  alias_attribute :u_id, :id
+  alias_attribute :u_name, :name
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

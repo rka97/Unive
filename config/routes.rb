@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  resources :users, :students, :teachers, :employees, :departments, :courses, :student_course_enrollments, :teacher_courses, :courseworks, :student_courseworks, :course_notes, :lectures
+  resources :students, :teachers, :employees, :departments, :courses, :student_course_enrollments, :teacher_courses, :courseworks, :student_courseworks, :course_notes, :lectures
   resources :students do
     get 'enrollments', on: :member
   end
+  resources :users do
+    post 'accept_friend', on: :member
+    post 'decline_friend', on: :member
+    post 'request_friendship', on: :member
+    post 'delete_friendship', on: :member
+    post 'block_friendship', on: :member
+    post 'unblock_friendship', on: :member
+  end 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
