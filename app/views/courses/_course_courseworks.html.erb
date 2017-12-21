@@ -43,25 +43,21 @@
       <th><%=sort_link(@cws, :date_assigned, 'Assigned')%></th>
       <th><%=sort_link(@cws, :weight, 'Weight')%></th>
       <th><%=sort_link(@cws, :total_mark, 'Total Mark')%></th>
-      <% if current_user.admin? %>
-        <th>Edit</th>
-        <th>Remove</th>
-      <% end %>
     </tr>
     </thead>
     <tbody>
     <% @courseworks.each do |coursework| %>
       <tr>
         <th scope="row"><%= coursework.id %></th>
+        <%if is_student?%>
         <td><%= link_to coursework.title, student_coursework_path %></td>
+          <%else%>
+          <td><%= link_to coursework.title, coursework_path %></td>
+        <%end%>
         <td><%= coursework.date_due %></td>
         <td><%= coursework.date_assigned %></td>
         <td><%= coursework.weight %></td>
         <td><%= coursework.total_mark %></td>
-        <% if current_user.admin? %>
-          <td><%= link_to "Edit", edit_coursework_path(id: (coursework.id)) %></td>
-          <td><%= link_to "Delete", coursework_path(id: (coursework.id)), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
-        <% end %>
       </tr>
     <% end %>
     </tbody>

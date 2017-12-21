@@ -18,6 +18,14 @@
     <td>Weight</td>
     <td><%= coursework.weight %></td>
 </tr>
+
+<%if local_assigns[:student_coursework]%>
+  <tr>
+    <td>Your mark</td>
+    <td><%=student_coursework.mark%></td>
+  </tr>
+<%end%>
+
 <tr>
     <td>Total Mark </td>
     <td><%= coursework.total_mark %></td>

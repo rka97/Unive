@@ -2,11 +2,12 @@
 <h1>Add submission to <%= link_to @coursework.title, @coursework %></h1>
 
 <div class="row">
+  <%if is_admin?%>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@student_coursework) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :date_handed %>
-        <%= f.date_field :date_handed, class: 'form-control' %>
+        <%= f.date_field :date_handed, class: 'form-control', :readonly => true%>
         <%= f.label :mark %>
         <%= f.number_field :mark, class: 'form-control', step: 0.01 %>
         <%= f.label :student %>
@@ -16,4 +17,26 @@
         <%= f.submit "Add Submission", class: "btn btn-primary" %>
     <% end %>
   </div>
+  <%end%>
+
+  <%if is_student?%>
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@student_coursework) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :date_handed %>
+        <%= f.date_field :date_handed, class: 'form-control', :readonly => true %>
+        <%= f.label :mark, :readonly => true  %>
+        <%= f.number_field :mark, class: 'form-control', step: 0.01, :readonly => true  %>
+        <%= f.label :student %>
+        <%= f.select :student_id, @students, {}, class: 'form-control', :readonly => true  %>
+        <%= f.label :coursework_id  %>
+        <%= f.select :coursework_id, [[@coursework.title + ' - ' + @coursework.course.code, @coursework.id]], {}, class: 'disabled-input form-control',:readonly => true%>
+        <%= f.label :solution, class: 'form_control'%>
+        <%= f.text_area :solution%>
+        <%= f.submit "Add Submission", class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  <%end%>
+
+
 </div>

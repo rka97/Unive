@@ -1,7 +1,8 @@
 <h1>My courses</h1>
 <div class="row">
   <% @courses.each do |course| %>
-    <div class="item col-lg-3">
+    <div class = "col-sm-4">
+    <div class="card">
       <div class="well">
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><%=link_to course.code + "  -  " + course.title, course %></li>
@@ -20,7 +21,8 @@
         </ul>
       </div>
     </div>
-  <%end%>
+    </div>
+<%end%>
 </div>
 </div>
 

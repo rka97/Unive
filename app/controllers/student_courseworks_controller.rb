@@ -6,6 +6,10 @@ class StudentCourseworksController < ApplicationController
         @coursework = Coursework.find(params[:coursework])
         students_to_add = (@coursework).course.students.reject{|x| @coursework.students.include? x }
         @students = students_to_add.collect {|s| [ s.name + " | " + s.id.to_s, s.id ]}
+        @student_coursework.student = current_user.profile_owner
+        @student_coursework.date_handed = DateTime.now.to_s(:db)
+        @student_coursework.coursework = @coursework
+        @student_coursework.mark = 0
     end
 
     def create
@@ -19,12 +23,29 @@ class StudentCourseworksController < ApplicationController
     end
 
     def show
-
+        @coursework = Coursework.find(params[:id])
+        if params.has_key?(:student_id)
+            @student_coursework = Student.find(params[:student_id]).works.find_by(coursework_id: params[:id])
+        else
+            @student_coursework = current_user.profile_owner.works.find_by(coursework_id: params[:id])
+        end
+        @course = @coursework.course
     end
-    
+
+
+    def index
+        @coursework = Coursework.find(params[:id])
+        if params.has_key?(:student_id)
+            @student_coursework = Student.find(params[:student_id]).works.find_by(coursework_id: params[:id])
+        else
+            @student_coursework = current_user.profile_owner.works.find_by(coursework_id: params[:id])
+        end
+        @course = @coursework.course
+    end
+
+
     def edit
         @student_coursework = StudentCoursework.find(params[:id])
-        @coursework = @student_coursework.coursework
     end
 
     def update
@@ -46,6 +67,6 @@ class StudentCourseworksController < ApplicationController
     
     private
     def studentcw_params
-        params.require(:student_coursework).permit(:id, :mark, :date_handed, :student_id, :coursework_id)
+        params.require(:student_coursework).permit(:id, :mark, :date_handed, :student_id, :coursework_id, :solution)
     end
 end

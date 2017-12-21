@@ -1,5 +1,7 @@
 <h3>Student Coursework</h3>
+<% if is_admin? %>
 <p><%= link_to "Add New Student Coursework Submission", new_student_coursework_path(:coursework => @coursework), class: "btn btn-primary" %></p>
+<% end %>
 
 <table class = "table table-bordered table-responsive">
     <thead>
@@ -15,12 +17,12 @@
     </tr>
     </thead>
     <tbody>
-        <% student_courseworks.each do |student_cw| %>
+        <% @coursework.student_courseworks.each do |student_cw| %>
             <tr>
                 <th scope="row"><%= student_cw.id %></th>
                 <td><%= link_to student_cw.student.name, student_cw.student %></td>
                 <td><%= student_cw.mark %></td>
-                <td><%= student_cw.date_handed %></td>
+                <td><%= link_to student_cw.date_handed, student_courseworks_path(id: @coursework.id,student_id: student_cw.student_id)  %></td>
                 <% if current_user.admin? %>
                     <td><%= link_to "Edit", edit_student_coursework_path(id: student_cw.id) %></td>
                     <td><%= link_to "Delete", student_coursework_path(id: student_cw.id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>

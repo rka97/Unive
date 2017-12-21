@@ -7,15 +7,15 @@ module SessionsHelper
     end
 
     def is_admin?
-      logged_in? && @current_user.profile_owner_type == "Admin"
+      logged_in? && current_user.admin?
     end
 
     def is_teacher?
-      logged_in? && @current_user.profile_owner_type == "Teacher"
+      logged_in? && current_user.profile_owner_type == "Teacher"
     end
 
     def is_student?
-      logged_in? && @current_user.profile_owner_type == "Student"
+      logged_in? && current_user.profile_owner_type == "Student"
     end
 
     def redirect_if_not_student
