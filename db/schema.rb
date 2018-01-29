@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218054503) do
+ActiveRecord::Schema.define(version: 20171221032117) do
 
   create_table "course_notes", force: :cascade do |t|
     t.string "title", null: false
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 20171218054503) do
     t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.string "friendable_type"
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "blocker_id"
+    t.integer "status"
+    t.index ["friendable_type", "friendable_id"], name: "index_friendships_on_friendable_type_and_friendable_id"
+  end
+
   create_table "lectures", force: :cascade do |t|
     t.string "place", null: false
     t.datetime "lec_time", null: false
@@ -82,6 +93,16 @@ ActiveRecord::Schema.define(version: 20171218054503) do
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_lectures_on_course_id"
     t.index ["teacher_id"], name: "index_lectures_on_teacher_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "student_course_enrollments", force: :cascade do |t|
@@ -102,9 +123,19 @@ ActiveRecord::Schema.define(version: 20171218054503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date_handed"
+    t.string "solution"
     t.index ["coursework_id", "student_id"], name: "index_student_courseworks_on_coursework_id_and_student_id", unique: true
     t.index ["coursework_id"], name: "index_student_courseworks_on_coursework_id"
     t.index ["student_id"], name: "index_student_courseworks_on_student_id"
+  end
+
+  create_table "student_teams", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_student_teams_on_student_id"
+    t.index ["team_id"], name: "index_student_teams_on_team_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -157,6 +188,12 @@ ActiveRecord::Schema.define(version: 20171218054503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_teachers_on_department_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

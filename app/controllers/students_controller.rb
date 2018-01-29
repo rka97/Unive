@@ -54,7 +54,4 @@ class StudentsController < ApplicationController
     def student_params
         params.require(:student).permit(:name, :section_number, :bench_number, :gender, :year, :phone_number, :address, :birth_date, :search, enrollments_attributes: [:id, :degree, :department_id, :_destroy])
     end
-    def enrolled(course_id)
-        self.courses.exists?(id: course_id) && self.enrollments.find(course_id: course_id).status == "Enrolled"
-    end
 end

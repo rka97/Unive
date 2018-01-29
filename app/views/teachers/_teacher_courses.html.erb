@@ -18,8 +18,8 @@
                 <th scope="row"><%=  course.id %></th>
                 <th scope="row"><%= link_to course.title , Course.find(course.id) %></td>
                 <% if current_user.admin? %>
-                    <td><%= link_to "Edit", edit_teacher_course_path(id: (teacher.teacher_courses.find_by(course_id: @course.id)).id) %></td>
-                    <td><%= link_to "Delete", teacher_course_path(id: (teacher.teacher_courses.find_by(course_id: @course.id)).id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
+                    <td><%= link_to "Edit", edit_teacher_course_path(id: (@teacher.teacher_courses.find_by(course_id: course.id)).id) %></td>
+                    <td><%= link_to "Delete", teacher_course_path(id: (@teacher.teacher_courses.find_by(course_id: course.id)).id), :method => :delete, :data => {confirm: "Are you sure?"} %></td>
                 <% end %>
             </tr>
         <% end %>

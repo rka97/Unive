@@ -1,0 +1,19 @@
+<%= search_form_for @q do |f| %>
+    <%= f.label :created_at_eq, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= f.datetime_field :created_at_eq, class: 'form-control' %>
+    </div>
+    <%= f.label :sender_name_cont, 'Sender Name contains', class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+      <%= f.search_field :sender_name_cont, class: 'form-control' %>
+    </div>
+    <%= f.label :receiver_name_cont, 'Receiver Name contains', class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+      <%= f.search_field :receiver_name_cont, class: 'form-control' %>
+    </div>
+    <%= f.label :content_cont, class: 'col-sm-2 col-form-label'  %>
+    <div class="col-sm-10">
+     <%= f.search_field :content_cont, class: 'form-control' %>
+    </div>
+    <%= f.submit class: 'btn btn-primary', type: 'submit' %>
+<% end %>

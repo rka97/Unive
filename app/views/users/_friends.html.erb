@@ -1,0 +1,18 @@
+<h3>Your Friends</h3>
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(q2, :u_id, "Id")%></th>
+        <th><%=sort_link(q2, :u_name, "Name")%></th>
+    </tr>
+    </thead>
+    <tbody>
+        <% friends.each do |pfriend| %>
+            <tr>
+                <th scope="row"><%= pfriend.id %></th>
+                <td><%= link_to pfriend.name, pfriend %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate friends, :param_name => "friends_page" %>

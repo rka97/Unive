@@ -2,16 +2,21 @@
   <th scope="row"><%= user.id %></th>
   <td><%= link_to user.name, user %></td>
   <td><%= user.email %></td>
-  <td><%= user.profile_owner_type %></td>
-  <td><%= link_to user.profile_owner_id, user.profile_owner %></td>
-  <td><%= user.created_at.to_date %></td>
-  <td><%= user.updated_at.to_date %></td>
-  <td><%= user.admin? ? 'Yes' : 'No' %></td>
-  <td><%= link_to "Edit", edit_user_path(user) %></td>
-  <td>
-    <% if current_user.admin? && user != current_user%>
-      <%= link_to "Delete", user_path(id: user.id), :method => :delete, :data => {confirm: "Are you sure?"} %>
+  <% if current_user.admin? %>
+    <td><%= user.profile_owner_type %></td>
+    <td><%= link_to user.profile_owner_id, user.profile_owner %></td>
+    <td><%= user.created_at.to_date %></td>
+    <td><%= user.updated_at.to_date %></td>
+    <% if current_user.admin? %>
+      <td><%= user.admin? ? 'Yes' : ( user.profile_owner_type == "Employee" ? 
+      (link_to 'No', make_admin_user_path(id: current_user.id, user_id: user.id), method: :post) : 'No') %></td>
+      <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <td>
+        <% if current_user.admin? && user != current_user%>
+          <%= link_to "Delete", user_path(id: user.id), :method => :delete, :data => {confirm: "Are you sure?"} %>
+        <% end %>
+      </td>
     <% end %>
-  </td>
+  <% end %>
   <td><%= gravatar_for user, size: 20 %></td>
 </tr>

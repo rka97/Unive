@@ -7,6 +7,12 @@
     <% if !logged_in?%>
         <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
     <% end %>
+    <br />
+    <% if logged_in? %>
+        <% if !current_user.pending_friends.empty? %>
+        You have pending friend requests. Please check the friendship page!!!
+        <% end %>
 
-    On the top right you can find the navigation links required to reach where you want!
+        <%# Announcement notifications go in here!! <br />%>
+    <% end %>
 </div>

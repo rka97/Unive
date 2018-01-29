@@ -1,6 +1,7 @@
-<%if current_user.admin? %>
 <h3>Teachers</h3>
+<%if current_user.admin? %>
 <p><%= link_to "Add New Teacher to Course", new_teacher_course_path(:course => @course), class: "btn btn-primary" %></p>
+<% end %>
 
 <table class = "table table-bordered table-responsive">
     <thead>
@@ -29,4 +30,3 @@
     </tbody>
 </table>
 <%= will_paginate @teachers, :param_name => "teachers_page" %>
-<% end %>

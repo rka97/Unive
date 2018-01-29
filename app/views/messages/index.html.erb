@@ -1,0 +1,22 @@
+<% provide(:title, 'Messages') %>
+<h1>Your Messages</h1>
+<ul class="users">
+  <%= render 'search' %>
+  <br />
+  <table class = "table">
+    <thead>
+      <tr>
+        <th><%=sort_link(@q, :created_at)%></th>
+        <th><%=sort_link(@q, :sender_name, 'Sender')%></th>
+        <th><%=sort_link(@q, :receiver_name, 'Receiver')%></th>
+        <th><%=sort_link(@q, :content)%></th>
+      </tr>
+      </thead>
+    <tbody>
+        <% @messages.each do |message| %>
+          <%= render message %>
+        <% end %>
+    </tbody>
+  </table>
+  <%#= will_paginate @messages %>
+</ul>

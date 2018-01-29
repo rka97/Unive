@@ -11,6 +11,51 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @q1 = @user.requested_friends.ransack(params[:q])
+    @pending_friends = @q1.result(distinct: true).paginate(page: params[:pending_friends_page])
+    @q2 = @user.friends.ransack(params[:q])
+    @friends = @q2.result(distinct: true).paginate(page: params[:friends_page])
+    mutual_friends_s = @user.friends & current_user.friends
+    @mutual_friends = mutual_friends_s.paginate(page: params[:friends_page])
+
+    @pieSize = {
+    :height => 500,
+    :width => 500
+    }
+
+    @pieData = [
+    {
+      value: 300,
+      color:"#F7464A",
+      highlight: "#FF5A5E",
+      label: "Red"
+    },
+    {
+      value: 50,
+      color: "#46BFBD",
+      highlight: "#5AD3D1",
+      label: "Green"
+    },
+    {
+      value: 100,
+      color: "#FDB45C",
+      highlight: "#FFC870",
+      label: "Yellow"
+    },
+    {
+      value: 40,
+      color: "#949FB1",
+      highlight: "#A8B3C5",
+      label: "Grey"
+    },
+    {
+      value: 120,
+      color: "#4D5360",
+      highlight: "#616774",
+      label: "Dark Grey"
+    }
+
+  ].to_json
   end
 
   def new
@@ -51,6 +96,42 @@ class UsersController < ApplicationController
   # Returns true if the given user is the current user.
   def current_user?(user)
     user == current_user
+  end
+
+  def make_admin
+    user = User.find(params[:user_id])
+    user.admin = true
+    user.save
+    redirect_back fallback_location: current_user
+  end
+
+  def request_friendship()
+    secondUser = User.find(params[:friend_id])
+    current_user.friend_request(secondUser)
+    flash[:success] = "Sent " + secondUser.name + " a friend request"
+    redirect_back fallback_location: current_user
+  end
+
+  def delete_friendship()
+    secondUser = User.find(params[:friend_id])
+    current_user.remove_friend(secondUser)
+    flash[:success] = "Removed " + secondUser.name + " from your friends."
+    #secondUser.remove_friend(current_user)
+    redirect_back fallback_location: current_user
+  end
+
+  def accept_friend()
+    secondUser = User.find(params[:friend_id])
+    current_user.accept_request(secondUser)
+    flash[:success] = "Friend request from " + secondUser.name + " accepted"
+    redirect_back fallback_location: current_user
+  end
+      
+  def decline_friend()
+      secondUser = User.find(params[:friend_id])
+      current_user.decline_request(secondUser)
+      flash[:success] = "Friend request from " + secondUser.name + " declined"
+      redirect_back fallback_location: current_user
   end
 
   private

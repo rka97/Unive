@@ -7,6 +7,25 @@
                     <%= gravatar_for @user, size: 250, class: "rounded img-fluid" %>
                 </div>
             </div>
+            <% if @user != current_user %>
+                <% if current_user.friends_with?(@user) || current_user.admin? || (current_user.profile_owner_type == "Teacher" && current_user.profile_owner.students.exists?(@user.id)) %>
+                        <%= link_to 'Send Message', new_message_path(receiver_id: @user.id), method: :get, class: 'btn btn-primary btn-lg', style: 'width:100%'%>
+                <% end %>
+                <div class="text-center col-md-auto goddamn-button">
+                    <% if current_user.friends_with?(@user) %>
+                        <%= button_to 'Remove Friend', delete_friendship_user_path(friend_id: @user.id), class: 'btn btn-lg btn-danger' %>
+                    <% else %>
+                        <% if current_user.pending_friends.exists?(@user.id) %>
+                            <button type="button" class="btn btn-secondary btn-lg" disabled>Friend Request Pending</button>
+                        <% elsif current_user.requested_friends.exists?(@user.id)%>
+                            <div class="col-sm-6"><%= button_to 'Accept', accept_friend_user_path(friend_id: @user.id), class: 'btn btn-primary' %></div>
+                            <div class="col-sm-6"><%= button_to 'Decline', decline_friend_user_path(friend_id: @user.id), class: 'btn btn-warning'  %></div>
+                        <% else %>
+                            <%= button_to 'Request Friendship', request_friendship_user_path(friend_id: @user.id), class: 'btn btn-lg btn-primary' %>
+                        <% end %>
+                    <% end %>
+                </div>
+            <% end %>
         </section>
         <table class = "table table-bordered table-responsive">
             <tbody>
@@ -15,5 +34,17 @@
         </table>
     </aside>
     <div class = "col-md-8" style="margin-top: 20px;">
+        <% if @user == current_user %>
+            <% if !@pending_friends.empty? %>
+                <%= render 'friend_requests' %>
+            <% end %>
+            <% if !@user.friends.empty? %>
+                <%= render 'friends', friends: @friends, q2: @q2%>
+            <% end %>
+        <% elsif !@mutual_friends.empty? %>
+            <%= render 'mutual_friends', friends: @mutual_friends %>
+        <% end %>
+
+        <%#= pie :pie_chart, @pieSize, @pieData%>
     </div>
 </div>

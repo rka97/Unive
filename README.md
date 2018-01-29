@@ -1,13 +1,9 @@
 # README
 
-# Admin functions
-To-do:
-Make an administrator able to do the following:
-- [x] Manage the number and academic standing of students in various departments.
-- [ ] Add or remove subjects, assign professors as well as teaching assistants to certain subjects in certain times, notify them and ask for their confirmation.
-- [ ] Manage and alter the timetables, notify professors and students of it, ask for confirmation from professors as well as class representatives.
-- [ ] Track which students are failing and require extra intervention or notification, as well which students have overdue fees or not enough class attendance.
-- [ ] Ban or discipline students for certain periods of time. Delete messages from the chat room.
+A simple Ruby on Rails website for managing university classes, very incomplete and probably won't be completed. Done as a project for our databases class.
+
+To use:
+As any rails application: install rails on windows or linux (the operating systems we tested), run bundle install, then db:setup and open the server using rails server. The website will then be on localhost:3000
 
 Changelog:
 - [x] Make a Student database table and the corresponding model (won't add much functionality yet).
@@ -38,19 +34,19 @@ Changelog:
 - [x] Add lectures.
 - [x] Admin can manage number of lectures in a course.
 - [x] Admin can assign teacher to a lecture.
+- [x] Admin can browse friendships among users.
+- [x] Admin should be able to make any user into an admin.
+- [x] Admin can see students marks, can track which students are close to failing (or failed).
+- [x] Add profile-profile messaging.
+- [x] Add profile-profile friendship.
+- [x] Add some statistical data visualization for courses and students.
 - [ ] Add teams model.
 - [ ] Admin can browse teams and associated team coursework.
-- [ ] Make announcements model.
-- [ ] Admin can announce things to students.
+- [ ] Admin/Teacher can announce things to students.
 - [ ] Admin can ban students.
-- [ ] Admin can browse friendships among users.
-- [ ] Admin should be able to make any user into an admin.
 - [ ] Admin can ask teacher to confirm lecture time/place.
-- [ ] Admin can see students marks, can track which students are close to failing (or failed).
-- [ ] Integrate chatroom.
+- [ ] Add chatrooms.
 - [ ] Clean up schema.
-
-# if there's time
 - [ ] Add course prerequisites.
 - [ ] Add comments on course notes and lectures.
 - [ ] Add file uploading on course notes.

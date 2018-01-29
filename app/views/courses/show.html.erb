@@ -29,7 +29,19 @@
             <%= render 'course_lectures' %>
         </div>
         <div class="row">
-            Show some statistical data here.
+            <% if !@course.courseworks.empty? && !@course.students.empty? %>
+                <% if current_user.student? %>
+                    <h3>Your Stats</h3>
+                    <strong>Your current mark:</strong> <%= @totalMark %> out of <%= @coursetotalMark %>
+                    <br />
+                    <strong>Your rank for this course: </strong> <%= @current_rank %> out of <%= @course.students.size %> students in this course.
+                <% end %>
+                <h3>Average Grades in Assignments</h3>
+                <%= line :gdist, @chartSize, @chartData %>
+                <br />>
+                <h3>Weights of Assignments</h3>
+                <%= pie :pie_chart, @chartSize, @pieCharData %>
+            <% end %>
         </div>
     </div>
 </div>

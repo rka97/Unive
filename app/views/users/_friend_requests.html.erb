@@ -1,0 +1,22 @@
+<h3>Friend Requests</h3>
+<table class = "table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th><%=sort_link(@q1, :id)%></th>
+        <th><%=sort_link(@q1, :name)%></th>
+        <th>Accept</th>
+        <th>Decline</th>
+    </tr>
+    </thead>
+    <tbody>
+        <% @pending_friends.each do |pfriend| %>
+            <tr>
+                <th scope="row"><%= pfriend.id %></th>
+                <td><%= link_to pfriend.name, pfriend %></td>
+                <td><%= button_to 'Accept', accept_friend_user_path(friend_id: pfriend.id), class: 'btn btn-primary' %></td>
+                <td><%= button_to 'Decline', decline_friend_user_path(friend_id: pfriend.id), class: 'btn btn-warning' %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @pending_friends, :param_name => "pending_friends_page" %>

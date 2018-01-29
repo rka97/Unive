@@ -1,0 +1,45 @@
+<% provide(:title, @coursework.title + ' - ' + @coursework.course.code ) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="users_info">
+      <h1 class="jumbotron text-center">
+        <%= @coursework.title %>
+      </h1>
+      <table class = "table table-bordered table-responsive">
+        <tbody>
+        <%= render 'courseworks/coursework_info', coursework: @coursework, student_coursework: @student_coursework %>
+        </tbody>
+      </table>
+    </section>
+  </aside>
+  <div class = "col-md-7 text-center" style="margin-top: 20px;">
+    <%if !@student_coursework.nil? %>
+        <h1>Solution:</h1>
+        <p><%=@student_coursework.solution%></p>
+      <% if current_user.student? %>
+        <%if @coursework.date_due > DateTime.now%>
+          <tr>
+            <td><%= link_to "Change", edit_student_coursework_path(coursework_id: @coursework_id, course_id: @course.id, id: @student_coursework.id), class: "btn btn-primary"%></td>
+          </tr>
+        <% else %>
+          <tr>
+            <td><%= link_to "Add", new_student_coursework_path(coursework: @coursework), class: "btn btn-primary"%></td>
+          </tr>
+        <%end%>
+      <% else %>
+        <tr>
+          <td><%= link_to "Mark", edit_student_coursework_path(coursework_id: @coursework_id, course_id: @course.id, id: @student_coursework.id), class: "btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    <%else%>
+      <p>No submissions.</p>
+
+      <% if current_user.student? %>
+          <tr>
+            <td><%= link_to "Add", new_student_coursework_path(coursework: @coursework), class: "btn btn-primary"%></td>
+          </tr>
+          <% end %>
+    <%end%>
+  </div>
+
+</div>

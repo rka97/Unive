@@ -1,15 +1,28 @@
 <% provide(:title, "Student Submission - " + @coursework.title) %>
-<h1>Edit <%= @student_coursework.student.name %>'s submission to <%= link_to @coursework.title, @coursework %></h1>
+<h1>Edit <%= @student_coursework.student.name %>'s submission to <%= link_to @coursework.title, student_coursework_path(@coursework.id, student_id: @student_coursework.student.id) %></h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@student_coursework) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <%= f.label :date_handed %>
-        <%= f.date_field :date_handed, class: 'form-control' %>
-        <%= f.label :mark %>
-        <%= f.number_field :mark, class: 'form-control', step: 0.01 %>
-        <%= f.submit "Save Changes", class: "btn btn-primary" %>
-    <% end %>
+<% if !current_user.student? %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@student_coursework) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <%= f.label :date_handed %>
+          <%= f.date_field :date_handed, class: 'form-control' %>
+          <%= f.label :mark %>
+          <%= f.number_field :mark, class: 'form-control', step: 0.01 %>
+          <%= f.submit "Save Changes", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@student_coursework) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <%= f.label :solution %>
+          <%= f.text_area :solution, class: 'form-control' %>
+          <%= f.submit "Save Changes", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

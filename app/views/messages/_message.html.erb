@@ -1,0 +1,6 @@
+<tr>
+  <th scope="row"><%= message.created_at.to_date %></th>
+  <td><%= link_to message.sender.name, message.sender %></td>
+  <td><%= link_to message.receiver.name, message.receiver %></td>
+  <td><%= message.content %></td>
+</tr>
