@@ -13,21 +13,32 @@
     </section>
   </aside>
   <div class = "col-md-7 text-center" style="margin-top: 20px;">
-    <%if @student_coursework%>
-      <h1>Your solution:</h1>
-      <p><%=@student_coursework.solution%></p>
-      <%if @coursework.date_due > DateTime.now%>
+    <%if !@student_coursework.nil? %>
+        <h1>Solution:</h1>
+        <p><%=@student_coursework.solution%></p>
+      <% if current_user.student? %>
+        <%if @coursework.date_due > DateTime.now%>
+          <tr>
+            <td><%= link_to "Change", edit_student_coursework_path(coursework_id: @coursework_id, course_id: @course.id, id: @student_coursework.id), class: "btn btn-primary"%></td>
+          </tr>
+        <% else %>
+          <tr>
+            <td><%= link_to "Add", new_student_coursework_path(coursework: @coursework), class: "btn btn-primary"%></td>
+          </tr>
+        <%end%>
+      <% else %>
         <tr>
-          <td><%= link_to "Change", edit_student_coursework_path(coursework: @coursework, course: @course), class: "btn btn-primary"%></td>
+          <td><%= link_to "Mark", edit_student_coursework_path(coursework_id: @coursework_id, course_id: @course.id, id: @student_coursework.id), class: "btn btn-primary"%></td>
         </tr>
-      <%end%>
+      <% end %>
     <%else%>
-      <p>You haven't made any submissions.</p>
-      <%if @coursework.date_due > DateTime.now%>
-        <tr>
-          <td><%= link_to "Add", new_student_coursework_path(coursework: @coursework), class: "btn btn-primary"%></td>
-        </tr>
-      <%end%>
+      <p>No submissions.</p>
+
+      <% if current_user.student? %>
+          <tr>
+            <td><%= link_to "Add", new_student_coursework_path(coursework: @coursework), class: "btn btn-primary"%></td>
+          </tr>
+          <% end %>
     <%end%>
   </div>
 

@@ -1,5 +1,9 @@
 <% provide(:title, "Student Submission - " + @coursework.title) %>
+<% if current_user.student? %>
+<h1>Add submission to <%= link_to @coursework.title, student_coursework_path(@coursework.id) %></h1>
+<% else %>
 <h1>Add submission to <%= link_to @coursework.title, @coursework %></h1>
+<% end %>
 
 <div class="row">
   <%if is_admin?%>

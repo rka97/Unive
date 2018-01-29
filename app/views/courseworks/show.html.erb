@@ -14,16 +14,17 @@
     </aside>
     <div class = "col-md-7 text-center" style="margin-top: 20px;">
         <div class="row">
-          <%if is_admin? || is_teacher?%>
+            <%if is_admin? || is_teacher?%>
             <%= render 'coursework_students', student_courseworks: @student_courseworks %>
-          <%end%>
-          <%if is_student?%>
-
+            <%end%>
+            <%if is_student?%>
             <h3>Student Coursework</h3>
-
             <%= @coursework.description %>
-
-          <%end%>
+            <%end%>
+            <% if @coursework.date_due <= Date.today %>
+            <h3>Grade Distribution</h3>
+                <%= line :grade_distr_cw, @chartSize, @chartData %>
+            <% end %>
         </div>
     </div>
 </div>

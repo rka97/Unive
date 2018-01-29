@@ -1,5 +1,5 @@
 <h3>Student Coursework</h3>
-<% if current_user.admin? || (current_user.profile_owner_type == "Student" && current_user.profile_owner.enrolled(@coursework.id)) %>
+<% if (current_user.profile_owner_type == "Student" && current_user.profile_owner.enrolled(@coursework.id)) %>
 <p><%= link_to "Add New Student Coursework Submission", new_student_coursework_path(:coursework => @coursework), class: "btn btn-primary" %></p>
 <% end %>
 <table class = "table table-bordered table-responsive">

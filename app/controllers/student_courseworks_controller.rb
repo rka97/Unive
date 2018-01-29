@@ -46,6 +46,7 @@ class StudentCourseworksController < ApplicationController
 
     def edit
         @student_coursework = StudentCoursework.find(params[:id])
+        @coursework = @student_coursework.coursework
     end
 
     def update

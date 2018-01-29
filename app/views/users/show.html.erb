@@ -44,5 +44,7 @@
         <% elsif !@mutual_friends.empty? %>
             <%= render 'mutual_friends', friends: @mutual_friends %>
         <% end %>
+
+        <%#= pie :pie_chart, @pieSize, @pieData%>
     </div>
 </div>
