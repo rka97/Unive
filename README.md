@@ -1,9 +1,9 @@
 # README
 
-A simple Ruby on Rails website for managing university classes, very incomplete and probably won't be completed. Done as a project for our databases class.
+A simple Ruby on Rails website for managing university classes, incomplete and won't be completed. Course project for Database Systems.
 
 To use:
-As any rails application: install rails on windows or linux (the operating systems we tested), run bundle install, then db:setup and open the server using rails server. The website will then be on localhost:3000
+As any rails application: install rails, run bundle install, then db:setup and open the server using rails server. The website will then be on localhost:3000.
 
 Changelog:
 - [x] Make a Student database table and the corresponding model (won't add much functionality yet).
@@ -28,7 +28,7 @@ Changelog:
 - [x] Admin can remove teachers from courses.
 - [x] Admin can enroll students in course.
 - [x] Admin can remove students from course.
-- [x] Add coursework (بسلطاطة ببابا غنوجه).
+- [x] Add coursework.
 - [x] Add student-coursework association.
 - [x] Add course notes.
 - [x] Add lectures.
