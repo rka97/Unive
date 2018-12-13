@@ -1,6 +1,6 @@
 # README
 
-A simple Ruby on Rails website for managing university classes. Course project for Database Systems.
+Ruby+Rails website for managing university classes. Course project for Database Systems.
 
 To use:
 As any rails application: install rails, run bundle install, then db:setup and open the server using rails server. The website will then be on localhost:3000.
